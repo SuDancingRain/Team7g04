@@ -1,0 +1,171 @@
+{
+  "{vendor}-{uuApp}-{uuSubApp}": {
+    "useCaseMap": {
+      "sys/uuAppWorkspace/init": {
+        "realization": "api/controllers/ProjectMainController.init",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "defaultUve": {
+        "realization": "index.html",
+        "httpMethod": "GET",
+        "type": "UVE"
+      },
+      "sys/uuAppWorkspace/initUve": {
+        "realization": "index.html",
+        "httpMethod": "GET",
+        "type": "UVE"
+      },
+      "subject/create": {
+        "realization": "api/controllers/SubjectController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "subject/delete": {
+        "realization": "api/controllers/SubjectController.delete",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "subject/update": {
+        "realization": "api/controllers/SubjectController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "subject/list": {
+        "realization": "api/controllers/SubjectController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "subject/get": {
+        "realization": "api/controllers/SubjectController.get",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "subject/filter": {
+        "realization": "api/controllers/SubjectController.filter",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "term/create": {
+        "realization": "api/controllers/TermController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "term/delete": {
+        "realization": "api/controllers/TermController.delete",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "term/update": {
+        "realization": "api/controllers/TermController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "term/list": {
+        "realization": "api/controllers/TermController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "term/get": {
+        "realization": "api/controllers/TermController.get",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "term/filter": {
+        "realization": "api/controllers/TermController.filter",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "assignment/create": {
+        "realization": "api/controllers/AssignmentController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "assignment/delete": {
+        "realization": "api/controllers/AssignmentController.delete",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "assignment/update": {
+        "realization": "api/controllers/AssignmentController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "assignment/list": {
+        "realization": "api/controllers/AssignmentController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "assignment/get": {
+        "realization": "api/controllers/AssignmentController.get",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "assignment/filter": {
+        "realization": "api/controllers/AssignmentController.filter",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "user/create": {
+        "realization": "api/controllers/UserController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "user/delete": {
+        "realization": "api/controllers/UserController.delete",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "user/update": {
+        "realization": "api/controllers/UserController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "user/list": {
+        "realization": "api/controllers/UserController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "user/get": {
+        "realization": "api/controllers/UserController.get",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "user/filter": {
+        "realization": "api/controllers/UserController.filter",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "grade/create": {
+        "realization": "api/controllers/GradeController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "grade/delete": {
+        "realization": "api/controllers/GradeController.delete",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "grade/update": {
+        "realization": "api/controllers/GradeController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "grade/list": {
+        "realization": "api/controllers/GradeController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "grade/get": {
+        "realization": "api/controllers/GradeController.get",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "grade/filter": {
+        "realization": "api/controllers/GradeController.filter",
+        "httpMethod": "GET",
+        "type": "CMD"
+      }
+    }
+  }
+}
