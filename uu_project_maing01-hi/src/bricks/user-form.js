@@ -50,7 +50,6 @@ export const UserForm = createVisualComponent({
           value: user.data.id,
           content: user.data.uuIdentity,
           content: user.data.role,
-          content: user.data.subject,
         });
       });
     }
@@ -112,11 +111,6 @@ export const UserForm = createVisualComponent({
 
           </UU5.Forms.Select>
 
-          <UU5.Forms.Text
-            name={"subject"}
-            label={<UU5.Bricks.Lsi lsi={Lsi.subject} />}
-
-          />
           <UU5.Bricks.Line size={"s"} />
           <UU5.Forms.Controls
             buttonReset

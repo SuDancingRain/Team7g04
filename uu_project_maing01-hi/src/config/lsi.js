@@ -13,7 +13,7 @@ const Lsi = {
       cs:"List předmětů",
       en:"List of subjects",
     },
-  personList:{
+  userList:{
     cs:"List uživatelů",
     en:"List of users"
   },

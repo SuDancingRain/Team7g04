@@ -1,13 +1,14 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import "uu5g04-bricks";
-import { createVisualComponent, useState, useDataList } from "uu5g04-hooks";
+import { createVisualComponent,useState,useDataList} from "uu5g04-hooks";
 import Uu5Tiles from "uu5tilesg02";
 import "uu_plus4u5g01-bricks";
 import Config from "./config/config.js";
 import Calls from "../calls";
 import Lsi from "./user-lsi";
 import UserForm from "../bricks/user-form"
+import AssignmentDataList from "../bricks/assignment-data-list.js";
 //@@viewOff:imports
 
 const STATICS = {
@@ -17,7 +18,8 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-export const UserList = createVisualComponent({
+export const UserList = AssignmentDataList(
+createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -37,7 +39,7 @@ export const UserList = createVisualComponent({
     const userListData = useDataList({
       handlerMap: {
         load: Calls.User.list,
-        createItem: Calls.User.add,
+        createItem: Calls.User.create,
       },
       itemHandlerMap: {
         update: Calls.User.edit,
@@ -45,6 +47,19 @@ export const UserList = createVisualComponent({
       },
       initialDtoIn: {},
     });
+
+
+    const assignmentAvailableTags = [];
+    if (props.data) {
+      props.data.forEach((assignment) => {
+        assignmentAvailableTags.push({
+          value: assignment.data.id,
+          content: assignment.data.name,
+        });
+      });
+    }
+
+
     //@@viewOff:private
 
     //@@viewOn:interface
@@ -70,20 +85,14 @@ export const UserList = createVisualComponent({
 
     function getCollumns() {
       return [
+        
         {
-          header: <UU5.Bricks.Lsi lsi={Lsi.uuIdentity} />,
-          sorterKey: "nameAsc",
+          header: <UU5.Bricks.Lsi lsi={Lsi.uuIdentity}/>,
           cell: (cellProps) => cellProps.data.data.uuIdentity,
-
         },
-
         {
-          header: <UU5.Bricks.Lsi lsi={Lsi.role} />,
+          header: <UU5.Bricks.Lsi lsi={Lsi.role}/>,
           cell: (cellProps) => cellProps.data.data.role,
-        },
-        {
-          header: <UU5.Bricks.Lsi lsi={Lsi.subject} />,
-          cell: (cellProps) => cellProps.data.data.subject,
         },
 
         {
@@ -160,7 +169,7 @@ export const UserList = createVisualComponent({
           </UU5.Bricks.Modal>
         )
         }
-        <UU5.Bricks.Button colorSchema={"green"} onClick={() => setSelectedUser({ data: {} })}>
+        <UU5.Bricks.Button colorSchema={"green"} onClick={()=> setSelectedUser({data: {} })}>
           <UU5.Bricks.Icon icon={"mdi-plus"} />
           <UU5.Bricks.Lsi lsi={Lsi.create} />
         </UU5.Bricks.Button>
@@ -171,6 +180,7 @@ export const UserList = createVisualComponent({
     ) : null;
     //@@viewOff:render
   },
-});
+})
+);
 
 export default UserList;

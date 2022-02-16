@@ -9,7 +9,6 @@ import Calls from "../calls";
 import Lsi from "./subject-lsi";
 import SubjectForm from "../bricks/subject-form"
 import AssignmentDataList from "../bricks/assignment-data-list.js";
-import AssignmentDetail from "./assignment-detail"
 //@@viewOff:imports
 
 const STATICS = {

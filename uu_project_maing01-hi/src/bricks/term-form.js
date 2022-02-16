@@ -4,7 +4,8 @@ import { createVisualComponent, useDataList } from "uu5g04-hooks";
 import Config from "./config/config";
 import Calls from "../calls";
 import Lsi from "../routes/term-lsi"
-import SubjectDataList from "./subject-data-list";
+import UserDataList from "./user-data-list";
+
 //@@viewOff:imports
 
 const STATICS = {
@@ -14,7 +15,7 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-export const TermForm = SubjectDataList(
+export const TermForm = UserDataList(
   createVisualComponent({
     ...STATICS,
 
@@ -63,12 +64,11 @@ export const TermForm = SubjectDataList(
         props.data.forEach((user) => {
           userAvailableTags.push({
             value: user.data.id,
-            content: user.data.name,
+            content: user.data.uuIdentity,
           });
         });
       }
-
-
+      
       async function handleOnSave(opt) {
         opt.component.setPending();
         try {
@@ -128,13 +128,13 @@ export const TermForm = SubjectDataList(
               name={"subjectId"}
               label={<UU5.Bricks.Lsi lsi={Lsi.subjectId} />}
 
-              value={props.subjectDataList}
+              value={props.selectedTerm?.subjectId || props.subjectId}
             />
 
             <UU5.Forms.TagSelect
               name={"userList"}
               label={<UU5.Bricks.Lsi lsi={Lsi.userList} />}
-              value={props.selectedUser?.userList || []}
+              value={props.selectedTerm?.userList || []}
               availableTags={userAvailableTags}
               multiple
             />
