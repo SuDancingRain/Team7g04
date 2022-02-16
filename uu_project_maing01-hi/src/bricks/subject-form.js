@@ -55,21 +55,10 @@ createVisualComponent({
           content: subject.data.supervisor,
           content: subject.data.degree,
           content: subject.data.language,
-          content: subject.data.assignment,
         });
       });
     }
     
-    const assignmentAvailableTags = [];
-    if (props.data) {
-      props.data.forEach((assignment) => {
-        assignmentAvailableTags.push({
-          value: assignment.data.id,
-          content: assignment.data.activity,
-        });
-      });
-    }
-
 
     async function handleOnSave(opt) {
       opt.component.setPending();
@@ -153,14 +142,6 @@ createVisualComponent({
             <UU5.Forms.Select.Option value="czech" />
           </UU5.Forms.Select>
 
-
-          <UU5.Forms.TagSelect
-              name={"assignmentList"}
-              label={<UU5.Bricks.Lsi lsi={Lsi.assignmentList} />}
-              value={props.selectedSubject?.assignmentList || []}
-              availableTags={assignmentAvailableTags}
-              multiple
-            />
           <UU5.Bricks.Line size={"s"} />
           <UU5.Forms.Controls
             buttonReset

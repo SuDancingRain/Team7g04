@@ -61,14 +61,10 @@ export const GradeDetail = createVisualComponent({
           result = (
             <UU5.Bricks.Block colorScheme="blue"  size= "l"card={"content"}>
              <b> <UU5.Bricks.Lsi lsi={Lsi.grade}/> </b> : {gradeData.data.grade}
+             <br />
+             <b> <UU5.Bricks.Lsi lsi={Lsi.userId}/> </b> : {gradeData.data.userId}
               <br />
-             <b> <UU5.Bricks.Lsi lsi={Lsi.description}/> </b> : {gradeData.data.description}
-              <br />
-             <b> <UU5.Bricks.Lsi lsi={Lsi.name}/> </b> : {gradeData.data.name}
-              <br />
-             <b> <UU5.Bricks.Lsi lsi={Lsi.subject}/> </b> : {gradeData.data.subject}
-              <br />
-             <b> <UU5.Bricks.Lsi lsi={Lsi.term}/> </b> : {gradeData.data.term}
+             <b> <UU5.Bricks.Lsi lsi={Lsi.assignmentId}/> </b> : {gradeData.data.assignmentId}
             </UU5.Bricks.Block>
 
           );

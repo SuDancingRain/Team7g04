@@ -3,10 +3,13 @@ import UU5 from "uu5g04";
 import "uu5g04-bricks";
 import { createVisualComponent, useDataObject, useState, useDataList } from "uu5g04-hooks";
 import "uu_plus4u5g01-bricks";
+import Uu5Tiles from "uu5tilesg02";
 import Config from "./config/config.js";
 import Calls from "../calls.js";
+import assignmentLsi from "./assignment-lsi"
+import gradeLsi from "./grade-lsi.js";
+
 import GradeForm from "../bricks/grade-form"
-import Lsi from "./assignment-lsi"
 //@@viewOff:imports
 
 const STATICS = {
@@ -50,7 +53,7 @@ export const AssignmentDetail = createVisualComponent({
         createItem: Calls.Grade.create,
       },
       itemHandlerMap: {
-        update: Calls.Grade.edit,
+        update: Calls.Grade.update,
         delete: Calls.Grade.delete,
       },
       initialDtoIn: {},
@@ -89,26 +92,16 @@ export const AssignmentDetail = createVisualComponent({
           result = (
             <UU5.Bricks.Block colorScheme="blue" card={"content"}>
             
-            <b> <UU5.Bricks.Lsi lsi={Lsi.name}/> </b> :   {assignmentData.data.name}
+            <b> <UU5.Bricks.Lsi lsi={assignmentLsi.name}/> </b> :   {assignmentData.data.name}
               <br />
-             <b> <UU5.Bricks.Lsi lsi={Lsi.description}/> </b> : {assignmentData.data.description}
+             <b> <UU5.Bricks.Lsi lsi={assignmentLsi.type}/> </b> : {assignmentData.data.type}
               <br />
-             <b> <UU5.Bricks.Lsi lsi={Lsi.dateOfTerm}/> </b> : {assignmentData.data.dateOfTerm}
+             <b> <UU5.Bricks.Lsi lsi={assignmentLsi.description}/> </b> : {assignmentData.data.description}
               <br />
-             <b> <UU5.Bricks.Lsi lsi={Lsi.deadline}/> </b> : {assignmentData.data.deadline}
+             <b> <UU5.Bricks.Lsi lsi={assignmentLsi.deadline}/> </b> : {assignmentData.data.deadline}
               <br />
-             <b> <UU5.Bricks.Lsi lsi={Lsi.requirements}/> </b> : {assignmentData.data.requirements}
-              <br />
-             <b> <UU5.Bricks.Lsi lsi={Lsi.capacity}/> </b> : {assignmentData.data.capacity}
-              <br />
-             <b> <UU5.Bricks.Lsi lsi={Lsi.supervisor}/> </b> : {assignmentData.data.supervisor}
-            <UU5.Bricks.Line />
-            <UU5.Bricks.Header level="4" content="Grade Form" />
-            <GradeForm 
-            setSelectedGrade={setSelectedGrade}
-            handleCreateGrade={handleCreateGrade}
-            handleUpdateGrade={handleUpdateGrade}
-            />
+             <b> <UU5.Bricks.Lsi lsi={assignmentLsi.supervisor}/> </b> : {assignmentData.data.supervisor}
+            
             </UU5.Bricks.Block>
 
           );
@@ -125,7 +118,111 @@ export const AssignmentDetail = createVisualComponent({
       return result;
     }
 
-    return getResult();
+    function getCollumns() {
+      return [
+        {
+          header: <UU5.Bricks.Lsi lsi={gradeLsi.userId} />,
+          cell: (cellProps) => cellProps.data.data.userId,
+
+        },
+
+        {
+          header: <UU5.Bricks.Lsi lsi={gradeLsi.grade} />,
+          cell: (cellProps) => cellProps.data.data.grade,
+        },
+
+
+        {
+          cell: (cellProps) => {
+            if (cellProps.data.state.includes("pending")) {
+              return <UU5.Bricks.Loading />
+            } else {
+              return (
+                <>
+                  <UU5.Bricks.Button
+                    colorSchema="blue"
+                    onClick={() => { UU5.Environment.getRouter().setRoute("gradeDetail", { id: cellProps.data.data.id }) }}
+                  >
+                    <UU5.Bricks.Icon
+                      icon="mdi-magnify"
+                    />
+                  </UU5.Bricks.Button>
+                  <UU5.Bricks.Button
+                    colorSchema="blue"
+                    onClick={() => setSelectedGrade(cellProps.data)}
+                  >
+                    <UU5.Bricks.Icon icon="mdi-pencil" />
+                  </UU5.Bricks.Button>
+                  <UU5.Bricks.Button
+                    colorSchema="red"
+                    onClick={() => setGradeToDelete(cellProps.data)}
+                  >
+                    <UU5.Bricks.Icon
+                      icon="mdi-close"
+                    />
+                  </UU5.Bricks.Button>
+                </>
+              );
+            }
+          },
+        },
+      ];
+    }
+
+    return currentNestingLevel ? (
+
+      <div {...attrs}>
+
+        {
+          getResult()
+        }
+        <UU5.Bricks.Line />
+
+        {
+          selectedGrade && (
+            <UU5.Bricks.Modal
+              header={<UU5.Bricks.Lsi lsi={props.selectedGrade?.id ? gradeLsi.updateGrade : gradeLsi.createGrade} />}
+              shown={!!selectedGrade}
+              onClose={() => setSelectedGrade(null)}
+            >
+              <GradeForm
+                selectedGrade={selectedGrade.data}
+                setSelectedGrade={setSelectedGrade}
+                handleCreateGrade={handleCreateGrade}
+                handleUpdateGrade={handleUpdateGrade}
+              />
+            </UU5.Bricks.Modal>
+          )
+        }
+
+        {gradeToDelete && (
+          <UU5.Bricks.Modal
+            header={"Confirm Grade Deletion"}
+            shown={true}
+            onClose={() => setGradeToDelete(null)}
+          >
+            <div className={"center uu5-common-padding-s"}>
+              <UU5.Bricks.Button onClick={() => setGradeToDelete(null)}>
+                Refuse
+              </UU5.Bricks.Button>
+              {""}
+              <UU5.Bricks.Button colorSchema={"red"} onClick={handleGradeDelete}>
+                Confirm
+              </UU5.Bricks.Button>
+            </div>
+          </UU5.Bricks.Modal>
+        )
+        }
+        <UU5.Bricks.Button colorSchema={"green"} onClick={() => setSelectedGrade({ data: {} })}>
+          <UU5.Bricks.Icon icon={"mdi-plus"} />
+          <UU5.Bricks.Lsi lsi={gradeLsi.create} />
+        </UU5.Bricks.Button>
+
+        <Uu5Tiles.List columns={getCollumns()} data={gradeListData.data || []} rowAlignment="center" rowHeight={150} />
+
+      </div>
+    ) : null;
+
     //@@viewOff:render
   },
 });

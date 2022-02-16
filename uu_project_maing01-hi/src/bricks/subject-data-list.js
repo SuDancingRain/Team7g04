@@ -4,7 +4,7 @@ import { createComponent, useDataList } from "uu5g04-hooks";
 import Calls from "../calls";
 //@@viewOff:imports
 
-function GradeDataList(Component, displayName) {
+function SubjectDataList(Component, displayName) {
   return createComponent({
     //@@viewOn:statics
     displayName,
@@ -20,27 +20,27 @@ function GradeDataList(Component, displayName) {
 
     //@@viewOn:render
     render(props) {
-      const gradeListData = useDataList({
+      const subjectListData = useDataList({
         handlerMap: {
-          load: Calls.Grade.list
+          load: Calls.Subject.list
         },
         initialDtoIn: {},
       });
 
       let result;
 
-      switch (gradeListData.state) {
+      switch (subjectListData.state) {
         case "pendingNoData":
         case "pending":
           result = <UU5.Bricks.Loading />;
           break;
         case "readyNoData":
         case "ready":
-          result = <Component {...props} data={gradeListData.data} />;
+          result = <Component {...props} data={subjectListData.data} />;
           break;
         case "errorNoData":
         case "error":
-          result = <UU5.Bricks.Error data={gradeListData.error} />;
+          result = <UU5.Bricks.Error data={subjectListData.error} />;
       }
 
       return result;
@@ -49,4 +49,4 @@ function GradeDataList(Component, displayName) {
   //@@viewOff:render
 }
 
-export default GradeDataList;
+export default SubjectDataList;

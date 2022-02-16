@@ -8,4 +8,6 @@ export default{
 
     year:{cs: "Rok", en: "Year"},
     season:{cs: "Pololetí", en: "Term"},
+    subjectId:{cs: "Kód předmětu ", en:"Subject Id"},
+    userList:{cs: "List uživatelů", en:"List of Users"},
     }

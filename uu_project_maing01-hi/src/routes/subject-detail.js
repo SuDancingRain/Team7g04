@@ -55,7 +55,7 @@ export const SubjectDetail = createVisualComponent({
         createItem: Calls.Term.create,
       },
       itemHandlerMap: {
-        update: Calls.Term.edit,
+        update: Calls.Term.update,
         delete: Calls.Term.delete,
       },
       initialDtoIn: {},

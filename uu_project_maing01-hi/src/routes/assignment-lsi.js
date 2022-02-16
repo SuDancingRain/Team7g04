@@ -6,13 +6,11 @@ export default{
     updateAssignment: { cs: "Upravit úkol", en: "Update Assignment" },
     unsuccessful: { cs: "Nepodařilo se upravit úkol", en: "Failed to updated subject" },
 
-    name:{"cs":"Aktivita","en":"Activity"},
+    name:{"cs":"Jméno","en":"Name"},
     description:{"cs":"Popisek","en":"Description"},
-    dateOfTerm:{"cs":"Datum Aktivity","en":"Date of Activity"},
+    type:{"cs":"Typ aktivity","en":"Type of activity"},
     deadline:{"cs":"Deadline","en":"Deadline"},
     supervisor:{"cs":"Odpovědná osoba","en":"Supervisor"},
-    capacity:{"cs":"Kapacita","en":"Capacity"},
-    gradeList:{"cs":"List známek","en":"List of Grades"},
-    requirements:{"cs":"Požadavky","en":"Requirements"},
+    termId:{"cs":"Id průběhu","en":"Term Id"},
     id:{cs:"ID", en:"ID"}
 }

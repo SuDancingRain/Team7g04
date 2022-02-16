@@ -8,7 +8,7 @@ export default {
 
     grade: { cs: "Známka", en: "Grade" },
     description: { cs: "Popisek", en: "Description" },
-    name: { cs: "uuIdentity", en: "uuIdentity" },
-    subject: { cs: "Předmět", en: "Subject" },
-    term: {cs:"Semestr", en:"Semester"}
+    userId: { cs: "uuIdentity", en: "uuIdentity" },
+    assignmentId: { cs: "Kód úkolu", en: "Assignment Id" },
+
 }

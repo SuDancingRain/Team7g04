@@ -4,6 +4,7 @@ import { createVisualComponent, useDataList } from "uu5g04-hooks";
 import Config from "./config/config";
 import Calls from "../calls";
 import Lsi from "../routes/term-lsi"
+import SubjectDataList from "./subject-data-list";
 //@@viewOff:imports
 
 const STATICS = {
@@ -13,7 +14,8 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-export const TermForm = createVisualComponent({
+export const TermForm = SubjectDataList(
+   createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -48,9 +50,10 @@ export const TermForm = createVisualComponent({
       termListData.data.forEach((term) => {
         termAvailableTags.push({
           value: term.data.id,
-          value: term.data.year,
-          content: term.data.termSeason,
-          content: term.data.subjectList,
+          content: term.data.year,
+          content: term.data.season,
+          content: term.data.subjectId,
+          content: term.data.userList
         });
       });
     }
@@ -111,17 +114,22 @@ export const TermForm = createVisualComponent({
           />
 
           <UU5.Forms.Select
-            name={"termSeason"}
-            label={<UU5.Bricks.Lsi lsi={Lsi.termSeason} />}
+            name={"season"}
+            label={<UU5.Bricks.Lsi lsi={Lsi.season} />}
             
-            value={props.selectedTerm?.termSeason || ""}
+            value={props.selectedTerm?.season || ""}
           >
 
             <UU5.Forms.Select.Option value={"winter"} />
             <UU5.Forms.Select.Option value={"summer"} />
 
           </UU5.Forms.Select>
+          <UU5.Forms.Text
+          name={"subjectId"}
+          label={<UU5.Bricks.Lsi lsi={Lsi.subjectId} />}
 
+          value={""}
+          />
 
           <UU5.Bricks.Line size={"s"} />
           <UU5.Forms.Controls
@@ -136,6 +144,6 @@ export const TermForm = createVisualComponent({
     //@@viewOff:render
   }
 })
-;
+);
 
 export default TermForm;
