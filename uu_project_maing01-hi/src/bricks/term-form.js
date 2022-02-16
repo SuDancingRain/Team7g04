@@ -15,135 +15,143 @@ const STATICS = {
 };
 
 export const TermForm = SubjectDataList(
-   createVisualComponent({
-  ...STATICS,
+  createVisualComponent({
+    ...STATICS,
 
-  //@@viewOn:propTypes
-  propTypes: {
-    shown: UU5.PropTypes.bool,
-    selectedTerm: UU5.PropTypes.object,
-    setFormOpened: UU5.PropTypes.func,
-    setSelectedTerm: UU5.PropTypes.func,
-    handleCreateTerm: UU5.PropTypes.func,
-    handleUpdateTerm: UU5.PropTypes.func,
-  },
-  //@@viewOff:propTypes
+    //@@viewOn:propTypes
+    propTypes: {
+      shown: UU5.PropTypes.bool,
+      selectedTerm: UU5.PropTypes.object,
+      setFormOpened: UU5.PropTypes.func,
+      setSelectedTerm: UU5.PropTypes.func,
+      handleCreateTerm: UU5.PropTypes.func,
+      handleUpdateTerm: UU5.PropTypes.func,
+    },
+    //@@viewOff:propTypes
 
-  //@@viewOn:defaultProps
-  defaultProps: {},
-  //@@viewOff:defaultProps
+    //@@viewOn:defaultProps
+    defaultProps: {},
+    //@@viewOff:defaultProps
 
-  render(props) {
-    //@@viewOn:private
-    
-
-    const termListData = useDataList({
-      handlerMap: {
-        load: Calls.Term.list,
-      },
-      initialDtoIn: {},
-    });
+    render(props) {
+      //@@viewOn:private
 
 
-    const termAvailableTags = [];
-    if (termListData.data) {
-      termListData.data.forEach((term) => {
-        termAvailableTags.push({
-          value: term.data.id,
-          content: term.data.year,
-          content: term.data.season,
-          content: term.data.subjectId,
-          content: term.data.userList
-        });
+      const termListData = useDataList({
+        handlerMap: {
+          load: Calls.Term.list,
+        },
+        initialDtoIn: {},
       });
-    }
-    
-    const subjectAvailableTags = [];
-    if (props.data) {
-      props.data.forEach((subject) => {
-        subjectAvailableTags.push({
-          value: subject.data.id,
-          content: subject.data.name,
-        });
-      });
-    }
 
 
-    async function handleOnSave(opt) {
-      opt.component.setPending();
-      try {
-        if (props.selectedTerm?.id) await props.handleUpdateTerm({ id: props.selectedTerm.id, ...opt.values });
-        else await props.handleCreateTerm(opt.values);
-        opt.component.setReady();
-        props.setSelectedTerm(null);
-      } catch (e) {
-        opt.component.getAlertBus().setAlert({
-          content: <UU5.Bricks.Lsi lsi={Lsi.unsuccessful} />,
-          colorSchema: "red",
+      const termAvailableTags = [];
+      if (termListData.data) {
+        termListData.data.forEach((term) => {
+          termAvailableTags.push({
+            value: term.data.id,
+            content: term.data.year,
+            content: term.data.season,
+            content: term.data.subjectId,
+            content: term.data.userList
+          });
         });
-        opt.component.setReady();
       }
-    }
 
-    //@@viewOff:private
+      const userAvailableTags = [];
+      if (props.data) {
+        props.data.forEach((user) => {
+          userAvailableTags.push({
+            value: user.data.id,
+            content: user.data.name,
+          });
+        });
+      }
 
-    //@@viewOn:interface
-    //@@viewOff:interface
 
-    //@@viewOn:render
+      async function handleOnSave(opt) {
+        opt.component.setPending();
+        try {
+          if (props.selectedTerm?.id) await props.handleUpdateTerm({ id: props.selectedTerm.id, ...opt.values });
+          else await props.handleCreateTerm(opt.values);
+          opt.component.setReady();
+          props.setSelectedTerm(null);
+        } catch (e) {
+          opt.component.getAlertBus().setAlert({
+            content: <UU5.Bricks.Lsi lsi={Lsi.unsuccessful} />,
+            colorSchema: "red",
+          });
+          opt.component.setReady();
+        }
+      }
 
-    const className = Config.Css.css``;
-    let attrs = UU5.Common.VisualComponent.getAttrs(props, className);
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
+      //@@viewOff:private
 
-    return currentNestingLevel ? (
-      <div {...attrs}>
+      //@@viewOn:interface
+      //@@viewOff:interface
 
-        <UU5.Forms.Form
-          labelColWidth={"xs-12 s-12 m-4 l-3 xl-3"}
-          valueColWidth={"xs-12 s-12 m-8 l-7 xl-7"}
-          onSave={handleOnSave}
-          onCancel={() => props.setSelectedTerm(null)}
-        >
+      //@@viewOn:render
 
-          <UU5.Forms.Number
-            name={"year"}
-            label={<UU5.Bricks.Lsi lsi={Lsi.year} />}
-            
-            value={props.selectedTerm?.year || ""}
-          />
+      const className = Config.Css.css``;
+      let attrs = UU5.Common.VisualComponent.getAttrs(props, className);
+      const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
 
-          <UU5.Forms.Select
-            name={"season"}
-            label={<UU5.Bricks.Lsi lsi={Lsi.season} />}
-            
-            value={props.selectedTerm?.season || ""}
+      return currentNestingLevel ? (
+        <div {...attrs}>
+
+          <UU5.Forms.Form
+            labelColWidth={"xs-12 s-12 m-4 l-3 xl-3"}
+            valueColWidth={"xs-12 s-12 m-8 l-7 xl-7"}
+            onSave={handleOnSave}
+            onCancel={() => props.setSelectedTerm(null)}
           >
 
-            <UU5.Forms.Select.Option value={"winter"} />
-            <UU5.Forms.Select.Option value={"summer"} />
+            <UU5.Forms.Number
+              name={"year"}
+              label={<UU5.Bricks.Lsi lsi={Lsi.year} />}
 
-          </UU5.Forms.Select>
-          <UU5.Forms.Text
-          name={"subjectId"}
-          label={<UU5.Bricks.Lsi lsi={Lsi.subjectId} />}
+              value={props.selectedTerm?.year || ""}
+            />
 
-          value={""}
-          />
+            <UU5.Forms.Select
+              name={"season"}
+              label={<UU5.Bricks.Lsi lsi={Lsi.season} />}
 
-          <UU5.Bricks.Line size={"s"} />
-          <UU5.Forms.Controls
-            buttonReset
-          />
-        </UU5.Forms.Form>
+              value={props.selectedTerm?.season || ""}
+            >
+
+              <UU5.Forms.Select.Option value={"winter"} />
+              <UU5.Forms.Select.Option value={"summer"} />
+
+            </UU5.Forms.Select>
+            <UU5.Forms.Text
+              name={"subjectId"}
+              label={<UU5.Bricks.Lsi lsi={Lsi.subjectId} />}
+
+              value={props.subjectDataList}
+            />
+
+            <UU5.Forms.TagSelect
+              name={"userList"}
+              label={<UU5.Bricks.Lsi lsi={Lsi.userList} />}
+              value={props.selectedUser?.userList || []}
+              availableTags={userAvailableTags}
+              multiple
+            />
+
+            <UU5.Bricks.Line size={"s"} />
+            <UU5.Forms.Controls
+              buttonReset
+            />
+          </UU5.Forms.Form>
 
 
 
-      </div >
-    ) : null;
-    //@@viewOff:render
-  }
-})
+        </div >
+      ) : null;
+      //@@viewOff:render
+    }
+  })
 );
 
 export default TermForm;
