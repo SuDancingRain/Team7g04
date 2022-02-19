@@ -210,11 +210,8 @@ export const SubjectDetail = createVisualComponent({
         },
       },
     ]
-    const Sorter =[
-      
-    ]
-    const activeFilters =[
-      {key:"subjectId", value: props.subjectId},
+    const Sorter = [
+
     ]
 
 
@@ -265,7 +262,7 @@ export const SubjectDetail = createVisualComponent({
         }
 
         <UU5.Bricks.Container>
-          <Uu5Tiles.ControllerProvider data={termListData.data || []} filters={Filter}      onLoad={activeFilters}   >
+          <Uu5Tiles.ControllerProvider data={termListData.data || []} filters={Filter} >
             <UU5.Bricks.Button colorSchema={"green"} onClick={() => setSelectedTerm({ data: {} })}>
               <UU5.Bricks.Icon icon={"mdi-plus"} />
               <UU5.Bricks.Lsi lsi={termLsi.create} />
