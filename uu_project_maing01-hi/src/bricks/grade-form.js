@@ -66,6 +66,15 @@ createVisualComponent({
           });
         });
       }
+      const userAvailableTags2 = [];
+      if (props.data) {
+        props.data.forEach((user) => {
+          userAvailableTags2.push({
+            value: user.data.name,
+            content: user.data.name,
+          });
+        });
+      }
      
 
 
@@ -118,6 +127,12 @@ createVisualComponent({
             label={<UU5.Bricks.Lsi lsi={Lsi.userId} />}
             value={props.selectedGrade?.userId || []}
             availableTags={userAvailableTags}
+          />
+             <UU5.Forms.TagSelect
+            name={"name"}
+            label={<UU5.Bricks.Lsi lsi={Lsi.name} />}
+            value={props.selectedGrade?.name || []}
+            availableTags={userAvailableTags2}
           />
        
 
