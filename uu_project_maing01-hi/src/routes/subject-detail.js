@@ -61,6 +61,16 @@ export const SubjectDetail = createVisualComponent({
 
     });
 
+    const termAvailableTags = [];
+    if (termListData.data) {
+      termListData.data.forEach((term) => {
+        termAvailableTags.push({
+          value: term.data.subjectId,
+          content: term.data.subjectId,
+        });
+      });
+    }
+
     //@@viewOff:private
 
     //@@viewOn:interface
@@ -176,9 +186,33 @@ export const SubjectDetail = createVisualComponent({
         },
       ];
     }
-    function filter(){
-    }
-    
+    const Filter = [
+      {
+        key: "subjectId",
+        label: { cs: "Kod předmětu", en: "Subject Id" },
+        filterFn: (item, value) => {
+          console.log(item, value[0])
+          return item.data.subjectId.includes(value[0]);
+        },
+        component: (
+          <UU5.Forms.TagSelect
+            name={"subjectId"}
+            label={<UU5.Bricks.Lsi lsi={termLsi.subjectId} />}
+            availableTags={termAvailableTags}
+            multiple={false}
+            required={true}
+          />
+        ),
+        getValueLabel: (value) => {
+          let termObject = termAvailableTags.find((termOption) => termOption.value === value[0]);
+          return termObject.content;
+        },
+      },
+    ]
+    const Sorter =[
+      
+    ]
+
 
     return currentNestingLevel ? (
 
@@ -225,13 +259,17 @@ export const SubjectDetail = createVisualComponent({
           </UU5.Bricks.Modal>
         )
         }
-        <UU5.Bricks.Button colorSchema={"green"} onClick={() => setSelectedTerm({ data: {} })}>
-          <UU5.Bricks.Icon icon={"mdi-plus"} />
-          <UU5.Bricks.Lsi lsi={termLsi.create} />
-        </UU5.Bricks.Button>
 
-        <Uu5Tiles.List columns={getCollumns()} data={termListData.data || []} rowAlignment="center" rowHeight={150} />
-
+        <UU5.Bricks.Container>
+          <Uu5Tiles.ControllerProvider data={termListData.data || []} filters={Filter} >
+            <UU5.Bricks.Button colorSchema={"green"} onClick={() => setSelectedTerm({ data: {} })}>
+              <UU5.Bricks.Icon icon={"mdi-plus"} />
+              <UU5.Bricks.Lsi lsi={termLsi.create} />
+            </UU5.Bricks.Button>
+            <Uu5Tiles.FilterBar />
+            <Uu5Tiles.List columns={getCollumns()} rowAlignment="center" rowHeight={150} />
+          </Uu5Tiles.ControllerProvider>
+        </UU5.Bricks.Container>
       </div>
     ) : null;
 

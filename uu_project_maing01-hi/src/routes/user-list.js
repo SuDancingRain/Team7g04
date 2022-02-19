@@ -131,6 +131,12 @@ createVisualComponent({
         },
       ];
     }
+    const Filter =[
+      
+    ]
+    const Sorter =[
+      
+    ]
 
     return currentNestingLevel ? (
       <div {...attrs}>
@@ -169,13 +175,17 @@ createVisualComponent({
           </UU5.Bricks.Modal>
         )
         }
+        
+        <UU5.Bricks.Container>
+          <Uu5Tiles.ControllerProvider data={userListData.data || []} filters={Filter} >
         <UU5.Bricks.Button colorSchema={"green"} onClick={()=> setSelectedUser({data: {} })}>
           <UU5.Bricks.Icon icon={"mdi-plus"} />
           <UU5.Bricks.Lsi lsi={Lsi.create} />
         </UU5.Bricks.Button>
-
-        <Uu5Tiles.List columns={getCollumns()} data={userListData.data || []} rowAlignment="center" rowHeight={150} />
-
+        <Uu5Tiles.FilterBar />
+            <Uu5Tiles.List columns={getCollumns()} rowAlignment="center" rowHeight={150} />
+          </Uu5Tiles.ControllerProvider>
+        </UU5.Bricks.Container>
       </div>
     ) : null;
     //@@viewOff:render

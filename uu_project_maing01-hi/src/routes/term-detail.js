@@ -168,6 +168,12 @@ export const TermDetail = createVisualComponent({
         },
       ];
     }
+    const Filter =[
+      
+    ]
+    const Sorter =[
+      
+    ]
 
     return currentNestingLevel ? (
 
@@ -214,13 +220,17 @@ export const TermDetail = createVisualComponent({
           </UU5.Bricks.Modal>
         )
         }
+        
+        <UU5.Bricks.Container>
+          <Uu5Tiles.ControllerProvider data={assignmentListData.data || []} filters={Filter} >
         <UU5.Bricks.Button colorSchema={"green"} onClick={() => setSelectedAssignment({ data: {} })}>
           <UU5.Bricks.Icon icon={"mdi-plus"} />
           <UU5.Bricks.Lsi lsi={assignmentLsi.create} />
         </UU5.Bricks.Button>
-
-        <Uu5Tiles.List columns={getCollumns()} data={assignmentListData.data || []} rowAlignment="center" rowHeight={150} />
-
+        <Uu5Tiles.FilterBar />
+            <Uu5Tiles.List columns={getCollumns()} rowAlignment="center" rowHeight={150} />
+          </Uu5Tiles.ControllerProvider>
+        </UU5.Bricks.Container>
       </div>
     ) : null;
 
