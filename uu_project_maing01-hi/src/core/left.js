@@ -61,12 +61,7 @@ export const Left = createVisualComponent({
               content: <UU5.Bricks.Lsi lsi={Lsi.left.userList} />
 
             },
-            {
-              id: "ungabunga",
-              href: "ungabunga",
-              content: <UU5.Bricks.Lsi lsi={Lsi.left.ungabunga} />
-
-            },
+          
 
           ]}
 
