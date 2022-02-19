@@ -8,7 +8,6 @@ import Config from "./config/config.js";
 import Calls from "../calls";
 import Lsi from "./subject-lsi";
 import SubjectForm from "../bricks/subject-form"
-import AssignmentDataList from "../bricks/assignment-data-list.js";
 //@@viewOff:imports
 
 const STATICS = {
@@ -18,7 +17,7 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-export const SubjectList = AssignmentDataList(
+export const SubjectList = 
 createVisualComponent({
   ...STATICS,
 
@@ -42,7 +41,7 @@ createVisualComponent({
         createItem: Calls.Subject.create,
       },
       itemHandlerMap: {
-        update: Calls.Subject.edit,
+        update: Calls.Subject.update,
         delete: Calls.Subject.delete,
       },
       initialDtoIn: {},
@@ -186,6 +185,6 @@ createVisualComponent({
     //@@viewOff:render
   },
 })
-);
+;
 
 export default SubjectList;

@@ -4,6 +4,7 @@ import { createVisualComponent, useDataList } from "uu5g04-hooks";
 import Config from "./config/config";
 import Calls from "../calls";
 import Lsi from "../routes/assignment-lsi"
+import UserDataList from "./user-data-list";
 //@@viewOff:imports
 
 const STATICS = {
@@ -13,7 +14,7 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-export const AssignmentForm =
+export const AssignmentForm = UserDataList (
   createVisualComponent({
     ...STATICS,
 
@@ -25,6 +26,7 @@ export const AssignmentForm =
       setSelectedAssignment: UU5.PropTypes.func,
       handleCreateAssignment: UU5.PropTypes.func,
       handleUpdateAssignment: UU5.PropTypes.func,
+      selectedTerm: UU5.PropTypes.object,
     },
     //@@viewOff:propTypes
 
@@ -54,17 +56,19 @@ export const AssignmentForm =
             content: assignment.data.description,
             content: assignment.data.deadline,
             content: assignment.data.supervisor,
-            content: assignment.data.termId
+            content: assignment.data.termId,
+            content: assignment.data.userList
           });
         });
       }
 
-      const gradeAvailableTags = [];
+     
+      const userAvailableTags = [];
       if (props.data) {
-        props.data.forEach((grade) => {
-          gradeAvailableTags.push({
-            value: grade.data.id,
-            content: grade.data.uuIdentity,
+        props.data.forEach((user) => {
+          userAvailableTags.push({
+            value: user.data.id,
+            content: user.data.name,
           });
         });
       }
@@ -144,8 +148,16 @@ export const AssignmentForm =
               name={"termId"}
               label={<UU5.Bricks.Lsi lsi={Lsi.termId} />}
 
-              value={props.selectedAssignment?.termId || ""}
+              value={props.selectedAssignment?.termId || props.selectedTerm?.id}
 
+            />
+
+            <UU5.Forms.TagSelect
+              name={"userList"}
+              label={<UU5.Bricks.Lsi lsi={Lsi.userList} />}
+              value={props.selectedTerm?.userList || []}
+              availableTags={userAvailableTags}
+              multiple
             />
 
             <UU5.Bricks.Line size={"s"} />
@@ -160,7 +172,7 @@ export const AssignmentForm =
       ) : null;
       //@@viewOff:render
     }
-  })
+  }))
   ;
 
 export default AssignmentForm;

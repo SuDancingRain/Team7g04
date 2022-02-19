@@ -7,6 +7,7 @@ const assignmentCreateDtoInType = shape({
     description:uu5String(4000).isRequired(),
     supervisor:uu5String(255).isRequired(),
     termId:id().isRequired(),
+    userList:array(id()),
   });
   
   const assignmentUpdateDtoInType = shape({
@@ -17,6 +18,7 @@ const assignmentCreateDtoInType = shape({
     description:uu5String(4000),
     supervisor:uu5String(255),
     termId:id(),
+    userList:array(id()),
   });
   const assignmentDeleteDtoInType = shape({
     id: id().isRequired(),

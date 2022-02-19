@@ -4,6 +4,7 @@ import { createVisualComponent, useDataList } from "uu5g04-hooks";
 import Config from "./config/config";
 import Calls from "../calls";
 import Lsi from "../routes/grade-lsi"
+import UserDataList from "./user-data-list";
 //@@viewOff:imports
 
 const STATICS = {
@@ -13,7 +14,8 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-export const GradeForm = createVisualComponent({
+export const GradeForm = UserDataList (
+createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -24,6 +26,7 @@ export const GradeForm = createVisualComponent({
     setSelectedGrade: UU5.PropTypes.func,
     handleCreateGrade: UU5.PropTypes.func,
     handleUpdateGrade: UU5.PropTypes.func,
+    selectedAssignment: UU5.PropTypes.object,
   },
   //@@viewOff:propTypes
 
@@ -53,6 +56,16 @@ export const GradeForm = createVisualComponent({
         });
       });
     }
+
+    const userAvailableTags = [];
+      if (props.data) {
+        props.data.forEach((user) => {
+          userAvailableTags.push({
+            value: user.data.uuIdentity,
+            content: user.data.name,
+          });
+        });
+      }
 
 
     async function handleOnSave(opt) {
@@ -99,18 +112,18 @@ export const GradeForm = createVisualComponent({
             value={props.selectedGrade?.grade || ""}
           />
 
-          <UU5.Forms.Text
+          <UU5.Forms.TagSelect
             name={"userId"}
             label={<UU5.Bricks.Lsi lsi={Lsi.userId} />}
-
-            value={props.selectedGrade?.userId || ""}
+            value={props.selectedGrade?.userId || []}
+            availableTags={userAvailableTags}
           />
 
           <UU5.Forms.Text
             name={"assignmentId"}
             label={<UU5.Bricks.Lsi lsi={Lsi.assignmentId} />}
 
-            value={props.selectedGrade?.assignmentId || ""}
+            value={props.selectedGrade?.assignmentId || props.selectedAssignment?.id}
           />
 
 
@@ -126,6 +139,7 @@ export const GradeForm = createVisualComponent({
     ) : null;
     //@@viewOff:render
   }
-});
+})
+);
 
 export default GradeForm;

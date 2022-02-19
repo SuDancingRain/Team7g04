@@ -3,14 +3,14 @@
 const userCreateDtoInType = shape({
     uuIdentity:uuIdentity().isRequired(),
     name:uu5String(255),
-    role:oneOf(["administrator","teacher","student"]).isRequired(),
+    role:oneOf(["Administrator","Teacher","Student"]).isRequired(),
   });
   
   const userUpdateDtoInType = shape({
     id: id().isRequired(),
     uuIdentity:uuIdentity(),
     name:uu5String(255),
-    role:oneOf(["administrator","teacher","student"]),
+    role:oneOf(["Administrator","Teacher","Student"]),
   });
   const userDeleteDtoInType = shape({
     id: id().isRequired(),

@@ -27,6 +27,7 @@ export const TermForm = UserDataList(
       setSelectedTerm: UU5.PropTypes.func,
       handleCreateTerm: UU5.PropTypes.func,
       handleUpdateTerm: UU5.PropTypes.func,
+      selectedSubject: UU5.PropTypes.object,
     },
     //@@viewOff:propTypes
 
@@ -64,7 +65,7 @@ export const TermForm = UserDataList(
         props.data.forEach((user) => {
           userAvailableTags.push({
             value: user.data.id,
-            content: user.data.uuIdentity,
+            content: user.data.name,
           });
         });
       }
@@ -128,7 +129,7 @@ export const TermForm = UserDataList(
               name={"subjectId"}
               label={<UU5.Bricks.Lsi lsi={Lsi.subjectId} />}
 
-              value={props.selectedTerm?.subjectId || props.subjectId}
+              value={props.selectedTerm?.subjectId || props.selectedSubject?.id}
             />
 
             <UU5.Forms.TagSelect

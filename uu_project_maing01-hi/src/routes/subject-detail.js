@@ -8,7 +8,6 @@ import Config from "./config/config.js";
 import Calls from "../calls.js";
 import subjectLsi from "./subject-lsi";
 import termLsi from "./term-lsi"
-
 import TermForm from "../bricks/term-form"
 
 //@@viewOff:imports
@@ -177,6 +176,9 @@ export const SubjectDetail = createVisualComponent({
         },
       ];
     }
+    function filter(){
+    }
+    
 
     return currentNestingLevel ? (
 
@@ -196,6 +198,7 @@ export const SubjectDetail = createVisualComponent({
             >
               <TermForm
                 selectedTerm={selectedTerm.data}
+                selectedSubject={subjectData.data}
                 setSelectedTerm={setSelectedTerm}
                 handleCreateTerm={handleCreateTerm}
                 handleUpdateTerm={handleUpdateTerm}

@@ -187,6 +187,7 @@ export const AssignmentDetail = createVisualComponent({
             >
               <GradeForm
                 selectedGrade={selectedGrade.data}
+                selectedAssignment={assignmentData.data}
                 setSelectedGrade={setSelectedGrade}
                 handleCreateGrade={handleCreateGrade}
                 handleUpdateGrade={handleUpdateGrade}

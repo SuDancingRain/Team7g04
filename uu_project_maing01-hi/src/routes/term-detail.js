@@ -67,7 +67,7 @@ export const TermDetail = createVisualComponent({
       return assignmentListData.handlerMap.createItem(newAssignmentData);
     }
 
-    function handleUpdateAssignment(updatedSubjectData) {
+    function handleUpdateAssignment(updatedAssignmentData) {
       return selectedAssignment.handlerMap.update(updatedAssignmentData);
     }
 
@@ -187,6 +187,7 @@ export const TermDetail = createVisualComponent({
             >
               <AssignmentForm
                 selectedAssignment={selectedAssignment.data}
+                selectedTerm={termData.data}
                 setSelectedAssignment={setSelectedAssignment}
                 handleCreateAssignment={handleCreateAssignment}
                 handleUpdateAssignment={handleUpdateAssignment}

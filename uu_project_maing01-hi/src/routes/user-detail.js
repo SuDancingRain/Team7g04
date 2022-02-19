@@ -62,6 +62,8 @@ export const UserDetail = createVisualComponent({
                         <UU5.Bricks.Block colorScheme="blue" size="l" card={"content"}>
                             <b> <UU5.Bricks.Lsi lsi={Lsi.uuIdentity} /> </b> : {userData.data.uuIdentity}
                             <br />
+                            <b> <UU5.Bricks.Lsi lsi={Lsi.name} /> </b> : {userData.data.name}
+                            <br />
                             <b> <UU5.Bricks.Lsi lsi={Lsi.role} /> </b> : {userData.data.role}
 
                         </UU5.Bricks.Block>

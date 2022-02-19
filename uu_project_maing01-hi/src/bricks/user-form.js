@@ -95,11 +95,16 @@ export const UserForm = createVisualComponent({
             label={<UU5.Bricks.Lsi lsi={Lsi.uuIdentity} />}
             value={props.selectedUser?.uuIdentity || ""}
           /> */}
-<UU5.Forms.Text
- name={"uuIdentity"}
- label={<UU5.Bricks.Lsi lsi={Lsi.uuIdentity} />}
- value={props.selectedUser?.uuIdentity || ""}
-/>
+          <UU5.Forms.Text
+            name={"uuIdentity"}
+            label={<UU5.Bricks.Lsi lsi={Lsi.uuIdentity} />}
+            value={props.selectedUser?.uuIdentity || ""}
+          />
+          <UU5.Forms.Text
+            name={"name"}
+            label={<UU5.Bricks.Lsi lsi={Lsi.name} />}
+            value={props.selectedUser?.name || ""}
+          />
           <UU5.Forms.Select
             name={"role"}
             label={<UU5.Bricks.Lsi lsi={Lsi.role} />}
