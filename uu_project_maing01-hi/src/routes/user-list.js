@@ -42,7 +42,7 @@ createVisualComponent({
         createItem: Calls.User.create,
       },
       itemHandlerMap: {
-        update: Calls.User.edit,
+        update: Calls.User.update,
         delete: Calls.User.delete,
       },
       initialDtoIn: {},
@@ -75,6 +75,7 @@ createVisualComponent({
     async function handleUserDelete() {
       await userToDelete.handlerMap.delete({ id: userToDelete.data.id });
       setUserToDelete(null);
+      window.location.reload();
     }
     //@@viewOff:interface
 

@@ -85,6 +85,7 @@ export const SubjectDetail = createVisualComponent({
     async function handleTermDelete() {
       await termToDelete.handlerMap.delete({ id: termToDelete.data.id });
       setTermToDelete(null);
+      window.location.reload();
     }
 
     //@@viewOff:interface

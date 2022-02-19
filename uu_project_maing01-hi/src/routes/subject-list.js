@@ -74,6 +74,7 @@ createVisualComponent({
     async function handleSubjectDelete() {
       await subjectToDelete.handlerMap.delete({ id: subjectToDelete.data.id });
       setSubjectToDelete(null);
+      window.location.reload();
     }
     //@@viewOff:interface
 

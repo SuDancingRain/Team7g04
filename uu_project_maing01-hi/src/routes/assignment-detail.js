@@ -72,6 +72,7 @@ export const AssignmentDetail = createVisualComponent({
     async function handleGradeDelete() {
       await gradeToDelete.handlerMap.delete({ id: gradeToDelete.data.id });
       setGradeToDelete(null);
+      window.location.reload();
     }
     //@@viewOff:interface
 
