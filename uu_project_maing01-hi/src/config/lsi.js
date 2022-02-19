@@ -17,6 +17,7 @@ const Lsi = {
     cs:"List uživatelů",
     en:"List of users"
   },
+
     about: {
       cs: "O aplikaci",
       en: "About Application",

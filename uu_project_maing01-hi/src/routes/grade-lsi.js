@@ -6,6 +6,7 @@ export default {
     updateGrade: { cs: "Upravit známka", en: "Update Grade" },
     unsuccessful: { cs: "Nepodařilo se upravit známka", en: "Failed to updated grade" },
 
+    name: { cs: "Jméno", en: "Name" },
     grade: { cs: "Známka", en: "Grade" },
     description: { cs: "Popisek", en: "Description" },
     userId: { cs: "uuIdentity", en: "uuIdentity" },

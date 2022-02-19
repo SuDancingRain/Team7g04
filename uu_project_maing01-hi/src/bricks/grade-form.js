@@ -66,6 +66,7 @@ createVisualComponent({
           });
         });
       }
+     
 
 
     async function handleOnSave(opt) {
@@ -118,6 +119,7 @@ createVisualComponent({
             value={props.selectedGrade?.userId || []}
             availableTags={userAvailableTags}
           />
+       
 
           <UU5.Forms.Text
             name={"assignmentId"}

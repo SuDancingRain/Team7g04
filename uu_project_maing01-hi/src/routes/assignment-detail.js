@@ -8,7 +8,7 @@ import Config from "./config/config.js";
 import Calls from "../calls.js";
 import assignmentLsi from "./assignment-lsi"
 import gradeLsi from "./grade-lsi.js";
-
+import UserDataList from "../bricks/user-data-list.js";
 import GradeForm from "../bricks/grade-form"
 //@@viewOff:imports
 
@@ -19,7 +19,8 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-export const AssignmentDetail = createVisualComponent({
+export const AssignmentDetail = UserDataList (
+createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -58,6 +59,17 @@ export const AssignmentDetail = createVisualComponent({
       },
       initialDtoIn: {},
     });
+
+    
+    const userAvailableTags = [];
+      if (props.data) {
+        props.data.forEach((user) => {
+          userAvailableTags.push({
+            value: user.data.name,
+            content: user.data.name,
+          });
+        });
+      }
     //@@viewOff:private
 
     //@@viewOn:interface
@@ -126,7 +138,11 @@ export const AssignmentDetail = createVisualComponent({
           cell: (cellProps) => cellProps.data.data.userId,
 
         },
+        {
+          header: <UU5.Bricks.Lsi lsi={gradeLsi.name} />,
+          cell: (cellProps) => cellProps.data.data.name,
 
+        },
         {
           header: <UU5.Bricks.Lsi lsi={gradeLsi.grade} />,
           cell: (cellProps) => cellProps.data.data.grade,
@@ -236,6 +252,7 @@ export const AssignmentDetail = createVisualComponent({
 
     //@@viewOff:render
   },
-});
+})
+);
 
 export default AssignmentDetail;
