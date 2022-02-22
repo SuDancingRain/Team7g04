@@ -21,7 +21,9 @@ class UserMongo extends UuObjectDao {
   async get(awid, id) {
     return await super.findOne({ id, awid });
   }
-
+  async getByUuIdentity(awid, uuIdentity) {
+    return await super.findOne({ uuIdentity, awid });
+  }
   async list(awid, order, pageInfo) {
     const filter = { awid };
     const sort = { name: order === "asc" ? 1 : -1 };

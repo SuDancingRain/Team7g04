@@ -40,7 +40,8 @@ class GradeAbl {
   constructor() {
     this.validator = Validator.load();
     this.dao = DaoFactory.getDao("grade");
-    this.assignmentDao = DaoFactory.getDao("assignment")
+    this.assignmentDao = DaoFactory.getDao("assignment");
+    this.userDao = DaoFactory.getDao("user");
   }
 
   async filter(awid, dtoIn) {
@@ -120,7 +121,7 @@ class GradeAbl {
     let userId = [session.getIdentity().getUuIdentity()];
     let visibility = authorizationResult.getAuthorizedProfiles().includes("Readers");
 
-    if (visibility === false) {
+    if (!visibility === true) {
 
       if (!dtoIn.assignmentId) {
         dtoOut = await this.dao.list(awid, dtoIn.order, dtoIn.pageInfo);
@@ -129,7 +130,7 @@ class GradeAbl {
       }
     } else {
       if (!dtoIn.assignmentId) {
-        dtoOut = await this.dao.listForReaders(awid,userId, dtoIn.order, dtoIn.pageInfo);
+        dtoOut = await this.dao.listForReaders(awid, userId, dtoIn.order, dtoIn.pageInfo);
       } else {
         dtoOut = await this.dao.listByAssignmentIdForReaders(awid, dtoIn.assignmentId, userId, dtoIn.order, dtoIn.pageInfo);
       }
@@ -160,7 +161,18 @@ class GradeAbl {
     //Receives awid
 
     dtoIn.awid = awid;
+    
+    //Get users name 
 
+    let uuIdentity = dtoIn.userId
+    let user;
+
+    for (let i = 0; i < uuIdentity.length; i++) {
+     user = await this.userDao.getByUuIdentity(awid, uuIdentity[i]);
+    }
+
+    dtoIn.name = user.name;
+    
     //Sets up a dtoOut and receives specified grade by ID
 
     let dtoOut = await this.dao.get(awid, dtoIn.id);
@@ -190,8 +202,7 @@ class GradeAbl {
 
     return dtoOut;
 
-
-  }
+}
 
   async delete(awid, dtoIn) {
 
@@ -249,6 +260,17 @@ class GradeAbl {
     //Receives awid
 
     dtoIn.awid = awid;
+
+    //Get users name 
+
+    let uuIdentity = dtoIn.userId
+    let user;
+
+    for (let i = 0; i < uuIdentity.length; i++) {
+     user = await this.userDao.getByUuIdentity(awid, uuIdentity[i]);
+    }
+
+    dtoIn.name = user.name;
 
     //Sets up a dtoOut
 
