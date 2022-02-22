@@ -33,11 +33,6 @@ class AssignmentMongo extends UuObjectDao {
 
     return await super.find(filter, pageInfo, sort);
   }
-
-  async filter(){
-    
-  }
-
 }
 
 module.exports = AssignmentMongo;

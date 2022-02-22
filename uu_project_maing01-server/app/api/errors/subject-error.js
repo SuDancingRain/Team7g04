@@ -112,20 +112,7 @@ const Get = {
   },
 };
 
-const Filter = {
-  UC_CODE: `${SUBJECT_ERROR_PREFIX}filter/`,
-  
-  InvalidDtoIn: class extends ProjectMainUseCaseError {
-    constructor() {
-      super(...arguments);
-      this.code = `${Filter.UC_CODE}invalidDtoIn`;
-      this.message = "DtoIn is not valid.";
-    }
-  },
-};
-
 module.exports = {
-  Filter,
   Get,
   List,
   Update,

@@ -36,6 +36,3 @@ const assignmentCreateDtoInType = shape({
     id: id().isRequired()
   });
   
-  const assignmentFilterDtoInType = shape({
-
-  });

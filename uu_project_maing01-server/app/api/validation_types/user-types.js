@@ -27,6 +27,3 @@ const userCreateDtoInType = shape({
     id: id().isRequired()
   });
   
-  const userFilterDtoInType = shape({
-
-  });

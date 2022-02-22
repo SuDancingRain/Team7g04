@@ -3,10 +3,6 @@ const SubjectAbl = require("../../abl/subject-abl.js");
 
 class SubjectController {
 
-  filter(ucEnv) {
-    return SubjectAbl.filter(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
-  }
-
   get(ucEnv) {
     return SubjectAbl.get(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }

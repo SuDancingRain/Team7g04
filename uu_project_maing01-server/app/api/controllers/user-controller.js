@@ -3,10 +3,6 @@ const UserAbl = require("../../abl/user-abl.js");
 
 class UserController {
 
-  filter(ucEnv) {
-    return UserAbl.filter(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
-  }
-
   get(ucEnv) {
     return UserAbl.get(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }

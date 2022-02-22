@@ -24,9 +24,6 @@ const WARNINGS = {
   getUnsupportedKeys: {
     code: `${Errors.Get.UC_CODE}unsupportedKeys`
   },
-  filterUnsupportedKeys: {
-    code: `${Errors.Filter.UC_CODE}unsupportedKeys`
-  },
 };
 
 const DEFAULTS = {
@@ -34,56 +31,12 @@ const DEFAULTS = {
   pageIndex: 0,
   pageSize: 100,
 };
-const AUTHORITITIES_PROFILE="Authotities"
 
 class SubjectAbl {
 
   constructor() {
     this.validator = Validator.load();
     this.dao = DaoFactory.getDao("subject");
-  }
-
-  async filter(awid, dtoIn) {
-
-    let validationResult = this.validator.validate("subjectFilterDtoInType", dtoIn);
-
-    let uuAppErrorMap = ValidationHelper.processValidationResult(
-      dtoIn,
-      validationResult,
-      WARNINGS.filterUnsupportedKeys.code,
-      Errors.Filter.InvalidDtoIn
-    );
-
-    //Receives awid
-
-    dtoIn.awid = awid;
-
-    //Sets up a dtoOut
-
-    let dtoOut;
-
-    //Get all subjects
-
-    let subjectList = await this.dao.list(awid)
-
-    //Acquire all subjects base on id
-
-    let subjectId = await this.dao.get(awid, dtoIn.id)
-
-    for (subjectList; subjectList < array.length; subjectList++) {
-      if (subjectId === subjectList.id) {
-        let subjectResult
-        subjectResult = subjectList
-      }
-
-    }
-    dtoOut = subjectResult
-    //returns the Dao record and errormap
-
-    dtoOut.uuAppErrorMap = uuAppErrorMap;
-
-    return dtoOut;
-
   }
 
   async get(awid, dtoIn) {

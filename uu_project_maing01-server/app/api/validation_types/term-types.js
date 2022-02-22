@@ -30,6 +30,3 @@ const termCreateDtoInType = shape({
     id: id().isRequired()
   });
   
-  const termFilterDtoInType = shape({
-
-  });

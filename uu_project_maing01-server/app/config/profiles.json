@@ -1,141 +1,269 @@
 {
   "{asid}": {
-    "profileList": ["AsidAuthorities","AsidExecutives","AsidLicenseOwner","Public"],
+    "profileList": [
+      "AsidAuthorities",
+      "AsidExecutives",
+      "AsidLicenseOwner",
+      "Public"
+    ],
     "useCaseMap": {}
   },
   "*": {
-    "profileList": ["Authorities","Executives","Readers","AwidLicenseOwner","Public"],
+    "profileList": [
+      "Authorities",
+      "Executives",
+      "Readers",
+      "AwidLicenseOwner",
+      "Public"
+    ],
     "useCaseMap": {
       "sys/uuAppWorkspace/init": {
-        "sysStateList": ["created"],
-        "profileList": ["AwidLicenseOwner"]
+        "sysStateList": [
+          "created"
+        ],
+        "profileList": [
+          "AwidLicenseOwner"
+        ]
       },
       "defaultUve": {
-        "profileList": ["Public"]
+        "profileList": [
+          "Public"
+        ]
       },
       "sys/uuAppWorkspace/initUve": {
-        "sysStateList": ["created"],
-        "profileList": ["Public","AwidLicenseOwner"]
+        "sysStateList": [
+          "created"
+        ],
+        "profileList": [
+          "Public",
+          "AwidLicenseOwner"
+        ]
       },
       "subject/create": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities"
+        ]
       },
       "subject/delete": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities"
+        ]
       },
       "subject/update": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities"
+        ]
       },
       "subject/list": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives",
+          "Readers"
+        ]
       },
       "subject/get": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
-      },
-      "subject/filter": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives",
+          "Readers"
+        ]
       },
       "term/create": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities"
+        ]
       },
       "term/delete": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities"
+        ]
       },
       "term/update": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities"
+        ]
       },
       "term/list": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives",
+          "Readers"
+        ]
       },
       "term/get": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
-      },
-      "term/filter": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives",
+          "Readers"
+        ]
       },
       "assignment/create": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives"
+        ]
       },
       "assignment/delete": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives"
+        ]
       },
       "assignment/update": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives"
+        ]
       },
       "assignment/list": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives",
+          "Readers"
+        ]
       },
       "assignment/get": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
-      },
-      "assignment/filter": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives",
+          "Readers"
+        ]
       },
       "user/create": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities"
+        ]
       },
       "user/delete": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities"
+        ]
       },
       "user/update": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities"
+        ]
       },
       "user/list": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives",
+          "Readers"
+        ]
       },
       "user/get": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
-      },
-      "user/filter": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives",
+          "Readers"
+        ]
       },
       "grade/create": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives"
+        ]
       },
       "grade/delete": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives"
+        ]
       },
       "grade/update": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives"
+        ]
       },
       "grade/list": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives",
+          "Readers"
+        ]
       },
       "grade/get": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
-      },
-      "grade/filter": {
-        "sysStateList": ["active"],
-        "profileList": ["Authorities","Executives","Readers"]
+        "sysStateList": [
+          "active"
+        ],
+        "profileList": [
+          "Authorities",
+          "Executives",
+          "Readers"
+        ]
       }
     }
   }

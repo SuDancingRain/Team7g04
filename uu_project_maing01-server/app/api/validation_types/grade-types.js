@@ -27,7 +27,3 @@ const gradeListDtoInType = shape({
 const gradeGetDtoInType = shape({
   id: id().isRequired()
 });
-
-const gradeFilterDtoInType = shape({
-
-});

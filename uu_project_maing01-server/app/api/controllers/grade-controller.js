@@ -3,10 +3,6 @@ const GradeAbl = require("../../abl/grade-abl.js");
 
 class GradeController {
 
-  filter(ucEnv) {
-    return GradeAbl.filter(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
-  }
-
   get(ucEnv) {
     return GradeAbl.get(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }

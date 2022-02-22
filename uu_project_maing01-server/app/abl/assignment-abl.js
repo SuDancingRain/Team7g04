@@ -24,9 +24,6 @@ const WARNINGS = {
   getUnsupportedKeys: {
     code: `${Errors.Get.UC_CODE}unsupportedKeys`
   },
-  filterUnsupportedKeys: {
-    code: `${Errors.Filter.UC_CODE}unsupportedKeys`
-  },
 };
 
 const DEFAULTS = {
@@ -40,10 +37,6 @@ class AssignmentAbl {
     this.validator = Validator.load();
     this.dao = DaoFactory.getDao("assignment");
     this.termDao = DaoFactory.getDao("term");
-  }
-
-  async filter(awid, dtoIn) {
-
   }
 
   async get(awid, dtoIn) {

@@ -3,10 +3,6 @@ const TermAbl = require("../../abl/term-abl.js");
 
 class TermController {
 
-  filter(ucEnv) {
-    return TermAbl.filter(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
-  }
-
   get(ucEnv) {
     return TermAbl.get(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }

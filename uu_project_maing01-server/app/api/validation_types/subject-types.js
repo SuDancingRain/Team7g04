@@ -32,7 +32,3 @@ const subjectListDtoInType = shape({
 const subjectGetDtoInType = shape({
   id: id().isRequired()
 });
-
-const subjectFilterDtoInType = shape({
-
-});

@@ -41,11 +41,6 @@
         "httpMethod": "GET",
         "type": "CMD"
       },
-      "subject/filter": {
-        "realization": "api/controllers/SubjectController.filter",
-        "httpMethod": "GET",
-        "type": "CMD"
-      },
       "term/create": {
         "realization": "api/controllers/TermController.create",
         "httpMethod": "POST",
@@ -68,11 +63,6 @@
       },
       "term/get": {
         "realization": "api/controllers/TermController.get",
-        "httpMethod": "GET",
-        "type": "CMD"
-      },
-      "term/filter": {
-        "realization": "api/controllers/TermController.filter",
         "httpMethod": "GET",
         "type": "CMD"
       },
@@ -101,11 +91,6 @@
         "httpMethod": "GET",
         "type": "CMD"
       },
-      "assignment/filter": {
-        "realization": "api/controllers/AssignmentController.filter",
-        "httpMethod": "GET",
-        "type": "CMD"
-      },
       "user/create": {
         "realization": "api/controllers/UserController.create",
         "httpMethod": "POST",
@@ -131,11 +116,6 @@
         "httpMethod": "GET",
         "type": "CMD"
       },
-      "user/filter": {
-        "realization": "api/controllers/UserController.filter",
-        "httpMethod": "GET",
-        "type": "CMD"
-      },
       "grade/create": {
         "realization": "api/controllers/GradeController.create",
         "httpMethod": "POST",
@@ -158,11 +138,6 @@
       },
       "grade/get": {
         "realization": "api/controllers/GradeController.get",
-        "httpMethod": "GET",
-        "type": "CMD"
-      },
-      "grade/filter": {
-        "realization": "api/controllers/GradeController.filter",
         "httpMethod": "GET",
         "type": "CMD"
       }
