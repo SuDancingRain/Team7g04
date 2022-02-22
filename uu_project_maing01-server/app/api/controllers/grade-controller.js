@@ -12,7 +12,7 @@ class GradeController {
   }
 
   list(ucEnv) {
-    return GradeAbl.list(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
+    return GradeAbl.list(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession(), ucEnv.getAuthorizationResult());
   }
 
   update(ucEnv) {

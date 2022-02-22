@@ -21,9 +21,14 @@ class AssignmentMongo extends UuObjectDao {
   async get(awid, id) {
     return await super.findOne({ id, awid });
   }
-
   async list(awid, order, pageInfo) {
     const filter = { awid };
+    const sort = { name: order === "asc" ? 1 : -1 };
+
+    return await super.find(filter, pageInfo, sort);
+  }
+  async listByTermId(awid, termId, order, pageInfo) {
+    const filter = { awid, termId };
     const sort = { name: order === "asc" ? 1 : -1 };
 
     return await super.find(filter, pageInfo, sort);

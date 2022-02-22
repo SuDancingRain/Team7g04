@@ -34,6 +34,7 @@ const DEFAULTS = {
   pageIndex: 0,
   pageSize: 100,
 };
+const AUTHORITITIES_PROFILE="Authotities"
 
 class SubjectAbl {
 
@@ -63,20 +64,20 @@ class SubjectAbl {
 
     //Get all subjects
 
-     let subjectList = await this.dao.list(awid)
+    let subjectList = await this.dao.list(awid)
 
-     //Acquire all subjects base on id
+    //Acquire all subjects base on id
 
-     let subjectId = await this.dao.get(awid,dtoIn.id)
+    let subjectId = await this.dao.get(awid, dtoIn.id)
 
-     for (subjectList ; subjectList < array.length; subjectList++) {
-       if(subjectId === subjectList.id){
-         let subjectResult 
-         subjectResult = subjectList
-       }
-       
-     }
-dtoOut=subjectResult
+    for (subjectList; subjectList < array.length; subjectList++) {
+      if (subjectId === subjectList.id) {
+        let subjectResult
+        subjectResult = subjectList
+      }
+
+    }
+    dtoOut = subjectResult
     //returns the Dao record and errormap
 
     dtoOut.uuAppErrorMap = uuAppErrorMap;
@@ -177,7 +178,7 @@ dtoOut=subjectResult
 
     //Sets up a dtoOut and receives specified subject by ID
 
-    let dtoOut = await this.dao.get(awid,dtoIn.id);
+    let dtoOut = await this.dao.get(awid, dtoIn.id);
 
     //Checks for existence of specified subject
 
@@ -246,7 +247,7 @@ dtoOut=subjectResult
 
   }
 
-  async create(awid, dtoIn) {
+  async create(awid, dtoIn, session) {
 
     //Checks the input of DtoIn and for unsuported keys
 

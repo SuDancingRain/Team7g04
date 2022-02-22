@@ -56,7 +56,9 @@ export const TermDetail = createVisualComponent({
         update: Calls.Assignment.update,
         delete: Calls.Assignment.delete,
       },
-      initialDtoIn: {},
+      initialDtoIn: {
+        termId: props.termId || props.params.id,
+      },
     });
 
     //@@viewOff:private
@@ -228,7 +230,6 @@ export const TermDetail = createVisualComponent({
           <UU5.Bricks.Icon icon={"mdi-plus"} />
           <UU5.Bricks.Lsi lsi={assignmentLsi.create} />
         </UU5.Bricks.Button>
-        <Uu5Tiles.FilterBar />
             <Uu5Tiles.List columns={getCollumns()} rowAlignment="center" rowHeight={150} />
           </Uu5Tiles.ControllerProvider>
         </UU5.Bricks.Container>

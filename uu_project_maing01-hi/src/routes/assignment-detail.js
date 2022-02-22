@@ -57,7 +57,9 @@ createVisualComponent({
         update: Calls.Grade.update,
         delete: Calls.Grade.delete,
       },
-      initialDtoIn: {},
+      initialDtoIn: {
+        assignmentId: props.assignmentId || props.params.id,
+      },
     });
 
     
@@ -243,7 +245,6 @@ createVisualComponent({
           <UU5.Bricks.Icon icon={"mdi-plus"} />
           <UU5.Bricks.Lsi lsi={gradeLsi.create} />
         </UU5.Bricks.Button>
-        <Uu5Tiles.FilterBar />
             <Uu5Tiles.List columns={getCollumns()} rowAlignment="center" rowHeight={150} />
           </Uu5Tiles.ControllerProvider>
         </UU5.Bricks.Container>

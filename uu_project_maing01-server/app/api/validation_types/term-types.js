@@ -19,6 +19,7 @@ const termCreateDtoInType = shape({
       });
 
   const termListDtoInType = shape({
+    subjectId:uu5String(), 
     order: oneOf(["asc", "desc"]),
     pageInfo: shape({
       pageIndex: integer(),

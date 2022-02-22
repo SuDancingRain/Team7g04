@@ -25,6 +25,7 @@ const assignmentCreateDtoInType = shape({
       });
 
   const assignmentListDtoInType = shape({
+    termId: uu5String(),
     order: oneOf(["asc", "desc"]),
     pageInfo: shape({
       pageIndex: integer(),

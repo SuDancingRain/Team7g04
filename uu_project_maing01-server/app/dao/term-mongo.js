@@ -29,6 +29,13 @@ class TermMongo extends UuObjectDao {
     return await super.find(filter, pageInfo, sort);
   }
 
+  async listBySubjectId(awid, subjectId, order, pageInfo) {
+    const filter = { awid, subjectId };
+    const sort = { name: order === "asc" ? 1 : -1 };
+
+    return await super.find(filter, pageInfo, sort);
+  }
+
   async filter(){
     
   }

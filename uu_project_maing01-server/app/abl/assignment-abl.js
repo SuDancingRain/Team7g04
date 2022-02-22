@@ -39,15 +39,16 @@ class AssignmentAbl {
   constructor() {
     this.validator = Validator.load();
     this.dao = DaoFactory.getDao("assignment");
+    this.termDao = DaoFactory.getDao("term");
   }
 
   async filter(awid, dtoIn) {
-    
+
   }
 
   async get(awid, dtoIn) {
-    
-    
+
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("assignmentGetDtoInType", dtoIn);
@@ -87,7 +88,7 @@ class AssignmentAbl {
   }
 
   async list(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("assignmentListDtoInType", dtoIn);
@@ -108,21 +109,26 @@ class AssignmentAbl {
     if (!dtoIn.pageInfo.pageSize) dtoIn.pageInfo.pageSize = DEFAULTS.pageSize;
     if (!dtoIn.pageInfo.pageIndex) dtoIn.pageInfo.pageIndex = DEFAULTS.pageIndex;
     if (!dtoIn.order) dtoIn.order = DEFAULTS.order;
+    //instances dtoOut
+
+    let dtoOut;
 
     //attemps to create a list out of Dao File
-
-    let dtoOut = await this.dao.list(awid, dtoIn.order, dtoIn.pageInfo);
-
+    if (!dtoIn.termId) {
+      dtoOut = await this.dao.list(awid, dtoIn.order, dtoIn.pageInfo);
+    } else {
+      dtoOut = await this.dao.listByTermId(awid, dtoIn.termId, dtoIn.order, dtoIn.pageInfo);
+    }
     //returns the list 
 
     dtoOut.uuAppErrorMap = uuAppErrorMap;
-
+    dtoOut.term = dtoIn.termId
     return dtoOut;
 
   }
 
   async update(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("assignmentUpdateDtoInType", dtoIn);
@@ -171,7 +177,7 @@ class AssignmentAbl {
   }
 
   async delete(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("assignmentDeleteDtoInType", dtoIn);
@@ -189,7 +195,7 @@ class AssignmentAbl {
 
     //Sets up a dtoOut and receives specified assignment by ID
 
-    let dtoOut = await this.dao.get(awid,dtoIn.id);
+    let dtoOut = await this.dao.get(awid, dtoIn.id);
 
     //Checks for existence of specified assignment
 
@@ -199,7 +205,7 @@ class AssignmentAbl {
 
     //attemps to delete record
 
-    await this.dao.delete(awid, dtoIn.id);    
+    await this.dao.delete(awid, dtoIn.id);
 
     //returns the errormap
 
@@ -211,7 +217,7 @@ class AssignmentAbl {
   }
 
   async create(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("assignmentCreateDtoInType", dtoIn);

@@ -40,15 +40,16 @@ class GradeAbl {
   constructor() {
     this.validator = Validator.load();
     this.dao = DaoFactory.getDao("grade");
+    this.assignmentDao = DaoFactory.getDao("assignment")
   }
 
   async filter(awid, dtoIn) {
-    
+
   }
 
   async get(awid, dtoIn) {
-    
-    
+
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("gradeGetDtoInType", dtoIn);
@@ -87,8 +88,8 @@ class GradeAbl {
 
   }
 
-  async list(awid, dtoIn) {
-    
+  async list(awid, dtoIn, session, authorizationResult) {
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("gradeListDtoInType", dtoIn);
@@ -110,20 +111,41 @@ class GradeAbl {
     if (!dtoIn.pageInfo.pageIndex) dtoIn.pageInfo.pageIndex = DEFAULTS.pageIndex;
     if (!dtoIn.order) dtoIn.order = DEFAULTS.order;
 
-    //attemps to create a list out of Dao File
+    //instances dtoOut
 
-    let dtoOut = await this.dao.list(awid, dtoIn.order, dtoIn.pageInfo);
+    let dtoOut;
+
+    //Gets Uuidentity and profiles, attemps to create a list out of Dao File
+
+    let userId = [session.getIdentity().getUuIdentity()];
+    let visibility = authorizationResult.getAuthorizedProfiles().includes("Readers");
+
+    if (visibility === false) {
+
+      if (!dtoIn.assignmentId) {
+        dtoOut = await this.dao.list(awid, dtoIn.order, dtoIn.pageInfo);
+      } else {
+        dtoOut = await this.dao.listByAssignmentId(awid, dtoIn.assignmentId, dtoIn.order, dtoIn.pageInfo);
+      }
+    } else {
+      if (!dtoIn.assignmentId) {
+        dtoOut = await this.dao.listForReaders(awid,userId, dtoIn.order, dtoIn.pageInfo);
+      } else {
+        dtoOut = await this.dao.listByAssignmentIdForReaders(awid, dtoIn.assignmentId, userId, dtoIn.order, dtoIn.pageInfo);
+      }
+    }
+
 
     //returns the list 
 
     dtoOut.uuAppErrorMap = uuAppErrorMap;
-
+    dtoOut.assignment = dtoIn.assignmentId
     return dtoOut;
 
   }
 
   async update(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("gradeUpdateDtoInType", dtoIn);
@@ -141,7 +163,7 @@ class GradeAbl {
 
     //Sets up a dtoOut and receives specified grade by ID
 
-    let dtoOut = await this.dao.get(awid,dtoIn.id);
+    let dtoOut = await this.dao.get(awid, dtoIn.id);
 
     //Checks for existence of specified grade
 
@@ -172,7 +194,7 @@ class GradeAbl {
   }
 
   async delete(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("gradeDeleteDtoInType", dtoIn);
@@ -190,7 +212,7 @@ class GradeAbl {
 
     //Sets up a dtoOut and receives specified grade by ID
 
-    let dtoOut = await this.dao.get(awid,dtoIn.id);
+    let dtoOut = await this.dao.get(awid, dtoIn.id);
 
     //Checks for existence of specified grade
 
@@ -199,9 +221,9 @@ class GradeAbl {
     }
 
     //attemps to delete record
-    
-      await this.dao.delete(awid, dtoIn.id);
-    
+
+    await this.dao.delete(awid, dtoIn.id);
+
     //returns the errormap
 
     dtoOut.uuAppErrorMap = uuAppErrorMap;
@@ -212,7 +234,7 @@ class GradeAbl {
   }
 
   async create(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("gradeCreateDtoInType", dtoIn);

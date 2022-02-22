@@ -39,14 +39,15 @@ class TermAbl {
   constructor() {
     this.validator = Validator.load();
     this.dao = DaoFactory.getDao("term");
+    this.subjectDao = DaoFactory.getDao("subject")
   }
 
   async filter(awid, dtoIn) {
-    
+
   }
 
   async get(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("termGetDtoInType", dtoIn);
@@ -86,7 +87,7 @@ class TermAbl {
   }
 
   async list(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("termListDtoInType", dtoIn);
@@ -108,20 +109,27 @@ class TermAbl {
     if (!dtoIn.pageInfo.pageIndex) dtoIn.pageInfo.pageIndex = DEFAULTS.pageIndex;
     if (!dtoIn.order) dtoIn.order = DEFAULTS.order;
 
-    //attemps to create a list out of Dao File
+    //instances dtoOut
 
-    let dtoOut = await this.dao.list(awid, dtoIn.order, dtoIn.pageInfo);
+    let dtoOut;
+
+    //attemps to create a list out of Dao File
+if(!dtoIn.subjectId){
+     dtoOut = await this.dao.list(awid,  dtoIn.order, dtoIn.pageInfo);
+}else{
+   dtoOut = await this.dao.listBySubjectId(awid, dtoIn.subjectId, dtoIn.order, dtoIn.pageInfo);
+} 
 
     //returns the list 
 
     dtoOut.uuAppErrorMap = uuAppErrorMap;
-
+    dtoOut.subject = dtoIn.subjectId;
     return dtoOut;
 
   }
 
   async update(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("termUpdateDtoInType", dtoIn);
@@ -170,7 +178,7 @@ class TermAbl {
   }
 
   async delete(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("termDeleteDtoInType", dtoIn);
@@ -197,9 +205,9 @@ class TermAbl {
     }
 
     //attemps to delete record
-    
-      await this.dao.delete(awid, dtoIn.id);
-   
+
+    await this.dao.delete(awid, dtoIn.id);
+
     //returns the errormap
 
     dtoOut.uuAppErrorMap = uuAppErrorMap;
@@ -210,7 +218,7 @@ class TermAbl {
   }
 
   async create(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("termCreateDtoInType", dtoIn);

@@ -19,6 +19,7 @@ const gradeDeleteDtoInType = shape({
     });
 
 const gradeListDtoInType = shape({
+  assignmentId:uu5String(),
   order: oneOf(["asc", "desc"]),
   pageInfo: shape({
     pageIndex: integer(),
