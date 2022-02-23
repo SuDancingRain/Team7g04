@@ -181,7 +181,7 @@ export const SubjectList =
           }
 
           <UU5.Bricks.Container>
-            <Uu5Tiles.ControllerProvider data={subjectListData.data || []} filters={Filter} >
+            <Uu5Tiles.ControllerProvider data={subjectListData.data || []}>
               <UU5.Bricks.Button colorSchema={"green"} onClick={() => setSelectedSubject({ data: {} })}>
                 <UU5.Bricks.Icon icon={"mdi-plus"} />
                 <UU5.Bricks.Lsi lsi={Lsi.create} />

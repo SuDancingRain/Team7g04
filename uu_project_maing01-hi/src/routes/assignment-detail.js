@@ -240,7 +240,7 @@ createVisualComponent({
         }
         
         <UU5.Bricks.Container>
-          <Uu5Tiles.ControllerProvider data={gradeListData.data || []} filters={Filter} >
+          <Uu5Tiles.ControllerProvider data={gradeListData.data || []}  >
         <UU5.Bricks.Button colorSchema={"green"} onClick={() => setSelectedGrade({ data: {} })}>
           <UU5.Bricks.Icon icon={"mdi-plus"} />
           <UU5.Bricks.Lsi lsi={gradeLsi.create} />

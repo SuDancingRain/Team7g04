@@ -225,7 +225,7 @@ export const TermDetail = createVisualComponent({
         }
         
         <UU5.Bricks.Container>
-          <Uu5Tiles.ControllerProvider data={assignmentListData.data || []} filters={Filter} >
+          <Uu5Tiles.ControllerProvider data={assignmentListData.data || []}  >
         <UU5.Bricks.Button colorSchema={"green"} onClick={() => setSelectedAssignment({ data: {} })}>
           <UU5.Bricks.Icon icon={"mdi-plus"} />
           <UU5.Bricks.Lsi lsi={assignmentLsi.create} />

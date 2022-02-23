@@ -89,7 +89,6 @@ export const Home = createVisualComponent({
           <UU5.Bricks.Lsi lsi={Lsi.auth.intro} />
         </WelcomeRow>
 
-        <UU5.Bricks.Image src="../assets/team7.png" />
       </div>
     );
     //@@viewOff:render
