@@ -4,6 +4,7 @@ const termCreateDtoInType = shape({
     year: integer().isRequired(),
     season: oneOf("winter","summer").isRequired(),
     subjectId:id().isRequired(),
+    supervisors:array(uu5String()).isRequired(),
     userList:array(id()),
     });
   
@@ -12,6 +13,7 @@ const termCreateDtoInType = shape({
     year: integer(),
     season: oneOf("winter","summer"),
     subjectId:id(),
+    supervisors:array(uu5String()),
     userList:array(id()),
   });
   const termDeleteDtoInType = shape({

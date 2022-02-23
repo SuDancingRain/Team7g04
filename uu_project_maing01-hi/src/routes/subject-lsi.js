@@ -10,7 +10,7 @@ export default {
     description: { cs: "Popisek", en: "Description" },
     credits: { cs: "Akreditace", en: "Credits" },
     degree: { cs: "Titul", en: "Degree" },
-    supervisor: { cs: "Učitelé", en: "Supervisors" },
+    supervisors: { cs: "Učitelé", en: "Supervisors" },
     language: { cs: "Jazyk", en: "Language" },
     assignmentList:{cs:"List úkolů",en:"List of Assignments"},
 }

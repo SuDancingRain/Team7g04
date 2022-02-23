@@ -4,7 +4,7 @@ import { createVisualComponent, useDataList } from "uu5g04-hooks";
 import Config from "./config/config";
 import Calls from "../calls";
 import Lsi from "../routes/subject-lsi"
-import AssignmentDataList from "../bricks/assignment-data-list"
+import UserDataList from "./user-data-list";
 //@@viewOff:imports
 
 const STATICS = {
@@ -14,7 +14,7 @@ const STATICS = {
   //@@viewOff:statics
 }
 
-export const SubjectForm = AssignmentDataList(
+export const SubjectForm = UserDataList(
 createVisualComponent({
   ...STATICS,
 
@@ -59,6 +59,18 @@ createVisualComponent({
       });
     }
     
+    const userAvailableTagsTeachers = [];
+    if (props.data) {
+      props.data.forEach((user) => {
+        if(user.data.role === "Teacher"){
+        userAvailableTagsTeachers.push({
+          value: user.data.id,
+          content: user.data.name,
+        });
+      }
+      });
+    }
+
 
     async function handleOnSave(opt) {
       opt.component.setPending();
@@ -115,12 +127,14 @@ createVisualComponent({
 
             value={props.selectedSubject?.credits || ""}
           />
-          <UU5.Forms.Text
-            name={"supervisor"}
-            label={<UU5.Bricks.Lsi lsi={Lsi.supervisor} />}
+          <UU5.Forms.TagSelect
+          name={"supervisors"}
+          label={<UU5.Bricks.Lsi lsi={Lsi.supervisors} />}
+          value={props.selectedSubject?.supervisors || [] }
+          availableTags={userAvailableTagsTeachers}
+          multiple={false}
+        />
 
-            value={props.selectedSubject?.supervisor || ""}
-          />
 
           <UU5.Forms.Select
             name={"degree"}

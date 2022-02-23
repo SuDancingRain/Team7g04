@@ -37,6 +37,7 @@ class SubjectAbl {
   constructor() {
     this.validator = Validator.load();
     this.dao = DaoFactory.getDao("subject");
+    this.userDao = DaoFactory.getDao("user");
   }
 
   async get(awid, dtoIn) {
@@ -128,6 +129,18 @@ class SubjectAbl {
     //Receives awid
 
     dtoIn.awid = awid;
+    
+    //Get users name 
+
+    let id = dtoIn.supervisors
+    let user;
+
+    for (let i = 0; i < id.length; i++) {
+      user = await this.userDao.get(awid, id[i]);
+    }
+
+    dtoIn.supervisorName = user.name;
+
 
     //Sets up a dtoOut and receives specified subject by ID
 
@@ -216,6 +229,18 @@ class SubjectAbl {
     //Receives awid
 
     dtoIn.awid = awid;
+    
+    //Get users name 
+
+    let id = dtoIn.supervisors
+    let user;
+
+    for (let i = 0; i < id.length; i++) {
+      user = await this.userDao.get(awid, id[i]);
+    }
+
+    dtoIn.supervisorName = user.name;
+
 
     //Sets up a dtoOut
 

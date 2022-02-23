@@ -37,6 +37,7 @@ class AssignmentAbl {
     this.validator = Validator.load();
     this.dao = DaoFactory.getDao("assignment");
     this.termDao = DaoFactory.getDao("term");
+    this.userDao = DaoFactory.getDao("user");
   }
 
   async get(awid, dtoIn) {
@@ -137,9 +138,21 @@ class AssignmentAbl {
 
     dtoIn.awid = awid;
 
+    //Get users name 
+
+    let id = dtoIn.supervisor
+    let user;
+
+    for (let i = 0; i < id.length; i++) {
+      user = await this.userDao.get(awid, id[i]);
+    }
+
+    dtoIn.supervisorName = user.name;
+
     //Sets up a dtoOut and receives specified assignment by ID
 
     let dtoOut = await this.dao.get(awid, dtoIn.id);
+
 
     //Checks for existence of specified assignment
 
@@ -225,6 +238,17 @@ class AssignmentAbl {
     //Receives awid
 
     dtoIn.awid = awid;
+
+    //Get users name 
+
+    let id = dtoIn.supervisor
+    let user;
+
+    for (let i = 0; i < id.length; i++) {
+      user = await this.userDao.get(awid, id[i]);
+    }
+
+    dtoIn.supervisorName = user.name;
 
     //Sets up a dtoOut
 

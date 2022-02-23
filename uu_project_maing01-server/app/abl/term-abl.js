@@ -37,6 +37,7 @@ class TermAbl {
     this.validator = Validator.load();
     this.dao = DaoFactory.getDao("term");
     this.subjectDao = DaoFactory.getDao("subject")
+    this.userDao = DaoFactory.getDao("user");
   }
 
   async get(awid, dtoIn) {
@@ -137,6 +138,18 @@ if(!dtoIn.subjectId){
     //Receives awid
 
     dtoIn.awid = awid;
+    
+    //Get users name 
+
+    let id = dtoIn.supervisors
+    let user;
+
+    for (let i = 0; i < id.length; i++) {
+      user = await this.userDao.get(awid, id[i]);
+    }
+
+    dtoIn.supervisorName = user.name;
+
 
     //Sets up a dtoOut and receives specified term by ID
 
@@ -226,6 +239,18 @@ if(!dtoIn.subjectId){
     //Receives awid
 
     dtoIn.awid = awid;
+    
+    //Get users name 
+
+    let id = dtoIn.supervisors
+    let user;
+
+    for (let i = 0; i < id.length; i++) {
+      user = await this.userDao.get(awid, id[i]);
+    }
+
+    dtoIn.supervisorName = user.name;
+
 
     //Sets up a dtoOut
 

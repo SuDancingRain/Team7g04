@@ -55,21 +55,37 @@ export const TermForm = UserDataList(
             content: term.data.year,
             content: term.data.season,
             content: term.data.subjectId,
+            content: term.data.supervisors,
             content: term.data.userList
           });
         });
       }
 
-      const userAvailableTags = [];
+      const userAvailableTagsStudent = [];
       if (props.data) {
         props.data.forEach((user) => {
-          userAvailableTags.push({
+          if (user.data.role === "Student") {
+            userAvailableTagsStudent.push({
+              value: user.data.id,
+              content: user.data.name,
+            });
+          }
+        });
+      }
+
+    
+      const userAvailableTagsTeachers = [];
+      if (props.data) {
+        props.data.forEach((user) => {
+          if(user.data.role === "Teacher"){
+          userAvailableTagsTeachers.push({
             value: user.data.id,
             content: user.data.name,
           });
+        }
         });
       }
-      
+
       async function handleOnSave(opt) {
         opt.component.setPending();
         try {
@@ -125,6 +141,15 @@ export const TermForm = UserDataList(
               <UU5.Forms.Select.Option value={"summer"} />
 
             </UU5.Forms.Select>
+
+            <UU5.Forms.TagSelect
+          name={"supervisors"}
+          label={<UU5.Bricks.Lsi lsi={Lsi.supervisors} />}
+          value={props.selectedTerm?.supervisors || props.selectedSubject?.supervisors }
+          availableTags={userAvailableTagsTeachers}
+          multiple={true}
+        />
+
             <UU5.Forms.Text
               name={"subjectId"}
               label={<UU5.Bricks.Lsi lsi={Lsi.subjectId} />}
@@ -136,7 +161,7 @@ export const TermForm = UserDataList(
               name={"userList"}
               label={<UU5.Bricks.Lsi lsi={Lsi.userList} />}
               value={props.selectedTerm?.userList || []}
-              availableTags={userAvailableTags}
+              availableTags={userAvailableTagsStudent}
               multiple
             />
 

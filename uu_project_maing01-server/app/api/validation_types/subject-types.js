@@ -4,7 +4,7 @@ const subjectCreateDtoInType = shape({
   name: uu5String(255).isRequired(),
   description: uu5String(4000).isRequired(),
   credits:integer(12).isRequired(),
-  supervisor:uu5String(255).isRequired(),
+  supervisors:array(uu5String()).isRequired(),
   degree:oneOf("bachelors","masters").isRequired(),
   language:oneOf("english","czech").isRequired(),
 });
@@ -14,7 +14,7 @@ const subjectUpdateDtoInType = shape({
   name: uu5String(255),
   description: uu5String(4000),
   credits:integer(12),
-  supervisor:uu5String(255),
+  supervisors:array(uu5String()),
   degree:oneOf("bachelors","masters"),
   language:oneOf("english","czech"),
 });

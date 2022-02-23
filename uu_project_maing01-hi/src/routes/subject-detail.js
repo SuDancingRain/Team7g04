@@ -105,7 +105,7 @@ export const SubjectDetail = createVisualComponent({
               <br />
               <b> <UU5.Bricks.Lsi lsi={subjectLsi.credits} /> </b> : {subjectData.data.credits}
               <br />
-              <b> <UU5.Bricks.Lsi lsi={subjectLsi.supervisor} /> </b> : {subjectData.data.supervisor}
+              <b> <UU5.Bricks.Lsi lsi={subjectLsi.supervisors} /> </b> : {subjectData.data.supervisorName}
               <br />
               <b> <UU5.Bricks.Lsi lsi={subjectLsi.degree} /> </b> : {subjectData.data.degree}
               <br />

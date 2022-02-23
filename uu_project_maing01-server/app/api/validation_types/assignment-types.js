@@ -5,7 +5,7 @@ const assignmentCreateDtoInType = shape({
     type:uu5String(255).isRequired(),
     deadline:uu5String(255).isRequired(),
     description:uu5String(4000).isRequired(),
-    supervisor:uu5String(255).isRequired(),
+    supervisor:array(uu5String()).isRequired(),
     termId:id().isRequired(),
     userList:array(id()),
   });
@@ -16,7 +16,7 @@ const assignmentCreateDtoInType = shape({
     type:uu5String(255),
     deadline:uu5String(255),
     description:uu5String(4000),
-    supervisor:uu5String(255),
+    supervisor:array(id()),
     termId:id(),
     userList:array(id()),
   });

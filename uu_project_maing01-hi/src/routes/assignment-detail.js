@@ -115,7 +115,7 @@ createVisualComponent({
               <br />
              <b> <UU5.Bricks.Lsi lsi={assignmentLsi.deadline}/> </b> : {assignmentData.data.deadline}
               <br />
-             <b> <UU5.Bricks.Lsi lsi={assignmentLsi.supervisor}/> </b> : {assignmentData.data.supervisor}
+             <b> <UU5.Bricks.Lsi lsi={assignmentLsi.supervisor}/> </b> : {assignmentData.data.supervisorName}
             
             </UU5.Bricks.Block>
 
