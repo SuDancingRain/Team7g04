@@ -87,9 +87,10 @@ createVisualComponent({
     function getCollumns() {
       return [
         
+        
         {
-          header: <UU5.Bricks.Lsi lsi={Lsi.uuIdentity}/>,
-          cell: (cellProps) => cellProps.data.data.uuIdentity,
+          header: <UU5.Bricks.Lsi lsi={Lsi.name}/>,
+          cell: (cellProps) => cellProps.data.data.name,
         },
         {
           header: <UU5.Bricks.Lsi lsi={Lsi.role}/>,
