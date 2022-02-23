@@ -56,17 +56,23 @@ export const GradeForm = UserDataList(
           });
         });
       }
-
       const userAvailableTags = [];
-      if (props.data) {
-        props.data.forEach((user) => {
-          userAvailableTags.push({
-            value: user.data.uuIdentity,
-            content: user.data.name,
-          });
+
+      if (props.selectedAssignment.userList) {
+        props.selectedAssignment.userList.forEach((users) => {
+          if (props.data) {
+            props.data.forEach((user) => {
+              if (user.data.id == users) {
+                userAvailableTags.push({
+                  value: user.data.uuIdentity,
+                  content: user.data.name,
+
+                })
+              }
+            })
+          }
         });
       }
-
 
 
       async function handleOnSave(opt) {

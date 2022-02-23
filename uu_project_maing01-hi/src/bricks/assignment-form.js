@@ -155,7 +155,7 @@ export const AssignmentForm = UserDataList (
             <UU5.Forms.TagSelect
               name={"userList"}
               label={<UU5.Bricks.Lsi lsi={Lsi.userList} />}
-              value={props.selectedTerm?.userList || []}
+              value={props.selectedAssignment?.userList || props.selectedTerm?.userList }
               availableTags={userAvailableTags}
               multiple
             />

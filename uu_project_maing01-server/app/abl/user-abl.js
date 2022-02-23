@@ -40,8 +40,8 @@ class UserAbl {
   }
 
   async get(awid, dtoIn) {
-    
-    
+
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("userGetDtoInType", dtoIn);
@@ -81,7 +81,7 @@ class UserAbl {
   }
 
   async list(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("userListDtoInType", dtoIn);
@@ -104,8 +104,9 @@ class UserAbl {
     if (!dtoIn.order) dtoIn.order = DEFAULTS.order;
 
     //attemps to create a list out of Dao File
+    let dtoOut
 
-    let dtoOut = await this.dao.list(awid, dtoIn.order, dtoIn.pageInfo);
+    dtoOut = await this.dao.list(awid, dtoIn.order, dtoIn.pageInfo);
 
     //returns the list 
 
@@ -116,7 +117,7 @@ class UserAbl {
   }
 
   async update(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("userUpdateDtoInType", dtoIn);
@@ -134,7 +135,7 @@ class UserAbl {
 
     //Sets up a dtoOut and receives specified user by ID
 
-    let dtoOut = await this.dao.get(awid,dtoIn.id);
+    let dtoOut = await this.dao.get(awid, dtoIn.id);
 
     //Checks for existence of specified user
 
@@ -165,7 +166,7 @@ class UserAbl {
   }
 
   async delete(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("userDeleteDtoInType", dtoIn);
@@ -183,7 +184,7 @@ class UserAbl {
 
     //Sets up a dtoOut and receives specified user by ID
 
-    let dtoOut = await this.dao.get(awid,dtoIn.id);
+    let dtoOut = await this.dao.get(awid, dtoIn.id);
 
     //Checks for existence of specified user
 
@@ -192,9 +193,9 @@ class UserAbl {
     }
 
     //attemps to delete record
-    
+
     await this.dao.delete(awid, dtoIn.id);
-    
+
     //returns the errormap
 
     dtoOut.uuAppErrorMap = uuAppErrorMap;
@@ -205,7 +206,7 @@ class UserAbl {
   }
 
   async create(awid, dtoIn) {
-    
+
     //Checks the input of DtoIn and for unsuported keys
 
     let validationResult = this.validator.validate("userCreateDtoInType", dtoIn);
