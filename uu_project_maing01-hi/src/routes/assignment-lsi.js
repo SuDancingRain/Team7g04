@@ -12,5 +12,6 @@ export default{
     deadline:{"cs":"Deadline","en":"Deadline"},
     supervisor:{"cs":"Odpovědná osoba","en":"Supervisor"},
     termId:{"cs":"Id průběhu","en":"Term Id"},
+    userList:{cs: "List studentů", en:"List of students"},
     id:{cs:"ID", en:"ID"}
 }

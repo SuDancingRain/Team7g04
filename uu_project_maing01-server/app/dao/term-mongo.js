@@ -24,14 +24,14 @@ class TermMongo extends UuObjectDao {
 
   async list(awid, order, pageInfo) {
     const filter = { awid };
-    const sort = { name: order === "asc" ? 1 : -1, season:order === "des" ? 1: -1 };
+    const sort = { name: order === "asc" ? 1 : -1, season:order === "asc" ? 1: -1 };
 
     return await super.find(filter, pageInfo, sort);
   }
 
   async listBySubjectId(awid, subjectId, order, pageInfo) {
     const filter = { awid, subjectId };
-    const sort = { year: order === "asc" ? 1 : -1, season:order === "des" ? 1: -1 };
+    const sort = { year: order === "asc" ? 1 : -1, season:order === "asc" ? 1: -1 };
 
     return await super.find(filter, pageInfo, sort);
   }

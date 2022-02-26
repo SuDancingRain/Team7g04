@@ -10,5 +10,5 @@ export default{
     season:{cs: "Pololetí", en: "Term"},
     supervisors: { cs: "Učitelé", en: "Supervisors" },
     subjectId:{cs: "Kód předmětu ", en:"Subject Id"},
-    userList:{cs: "List uživatelů", en:"List of Users"},
+    userList:{cs: "List studentů", en:"List of students"},
     }
