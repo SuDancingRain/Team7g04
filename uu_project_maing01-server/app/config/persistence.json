@@ -8,19 +8,24 @@
           "realization": "dao/ProjectMainMongo"
         },
         "subject": {
-          "realization": "dao/SubjectMongo"
+          "realization": "dao/SubjectMongo",
+          "maxNoi":10000
         },
         "term": {
-          "realization": "dao/TermMongo"
+          "realization": "dao/TermMongo",
+          "maxNoi":10000
         },
         "assignment": {
-          "realization": "dao/AssignmentMongo"
+          "realization": "dao/AssignmentMongo",
+          "maxNoi":10000
         },
         "user": {
-          "realization": "dao/UserMongo"
+          "realization": "dao/UserMongo",
+          "maxNoi":10000
         },
         "grade": {
-          "realization": "dao/GradeMongo"
+          "realization": "dao/GradeMongo",
+          "maxNoi":10000
         }
       }
     }
