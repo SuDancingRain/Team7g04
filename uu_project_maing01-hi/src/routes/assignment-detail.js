@@ -105,7 +105,7 @@ createVisualComponent({
       } else {
         if (currentNestingLevel) {
           result = (
-            <UU5.Bricks.Block colorScheme="blue" card={"content"}>
+            <UU5.Bricks.Block colorSchema="blue" card={"content"} style="font-size:24px">
             
             <b> <UU5.Bricks.Lsi lsi={assignmentLsi.name}/> </b> :   {assignmentData.data.name}
               <br />

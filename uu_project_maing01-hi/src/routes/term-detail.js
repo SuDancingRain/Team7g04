@@ -95,12 +95,12 @@ export const TermDetail = createVisualComponent({
       } else {
         if (currentNestingLevel) {
           result = (
-            <UU5.Bricks.Block colorScheme="blue" card={"content"}>
+            <UU5.Bricks.Block colorSchema="blue" card={"content"} style="font-size:24px">
               
-             <b> <UU5.Bricks.Lsi lsi={termLsi.year}/> </b> : {termData.data.year}
+             <b> <UU5.Bricks.Lsi lsi={termLsi.year} /> </b> : {termData.data.year}
               <br />
-             <b> <UU5.Bricks.Lsi lsi={termLsi.season}/> </b> : {termData.data.season}
-         
+             <b> <UU5.Bricks.Lsi lsi={termLsi.season} /> </b> : {termData.data.season}
+             
             </UU5.Bricks.Block>
           );
         } else {

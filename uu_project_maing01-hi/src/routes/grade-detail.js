@@ -59,7 +59,7 @@ export const GradeDetail = createVisualComponent({
       } else {
         if (currentNestingLevel) {
           result = (
-            <UU5.Bricks.Block colorScheme="blue"  size= "l"card={"content"}>
+            <UU5.Bricks.Block colorSchema="blue"  style="font-size:24px" card={"content"}>
              <b> <UU5.Bricks.Lsi lsi={Lsi.grade}/> </b> : {gradeData.data.grade}
              <br />
              <b> <UU5.Bricks.Lsi lsi={Lsi.userId}/> </b> : {gradeData.data.userId}
