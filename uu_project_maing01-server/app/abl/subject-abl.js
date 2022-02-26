@@ -146,6 +146,15 @@ class SubjectAbl {
 
     let dtoOut = await this.dao.get(awid, dtoIn.id);
 
+
+    //Checks for an existence of a subject with a same name
+    let name = dtoIn.name;
+    let subjectDb = await this.dao.getByName(awid, name);
+
+    if (subjectDb) {
+      throw new Errors.Update.SubjectAlreadyExists({ uuAppErrorMap }, { code: name });
+    }
+
     //Checks for existence of specified subject
 
     if (!dtoOut) {

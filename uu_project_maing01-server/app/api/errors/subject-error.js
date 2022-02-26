@@ -72,6 +72,13 @@ const Update = {
       this.message = "Subject does not exist.";
     }
   },
+  SubjectAlreadyExists: class extends ProjectMainUseCaseError{
+    constructor() {
+      super(...arguments);
+      this.code = `${Create.UC_CODE}subjectAlreadyExists`;
+      this.message = "Subject already exists.";
+    }
+  },
   SubjectDaoUpdateFailed: class extends ProjectMainUseCaseError {
     constructor() {
       super(...arguments);
