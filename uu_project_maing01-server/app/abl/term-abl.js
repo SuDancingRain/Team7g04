@@ -27,7 +27,7 @@ const WARNINGS = {
 };
 
 const DEFAULTS = {
-  order: "des",
+  order: "desc",
   pageIndex: 0,
   pageSize: 100,
 };
