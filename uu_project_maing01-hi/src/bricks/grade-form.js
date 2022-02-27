@@ -112,12 +112,19 @@ export const GradeForm = UserDataList(
             onCancel={() => props.setSelectedGrade(null)}
           >
 
-            <UU5.Forms.Number
+            <UU5.Forms.Select
               name={"grade"}
               label={<UU5.Bricks.Lsi lsi={Lsi.grade} />}
 
               value={props.selectedGrade?.grade || ""}
-            />
+            >
+              
+            <UU5.Forms.Select.Option value="1" />
+            <UU5.Forms.Select.Option value="2" />
+            <UU5.Forms.Select.Option value="3" />
+            <UU5.Forms.Select.Option value="4" />
+            <UU5.Forms.Select.Option value="5" />
+            </UU5.Forms.Select>
 
             <UU5.Forms.TagSelect
               name={"userId"}
