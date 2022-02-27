@@ -6,7 +6,7 @@ export default{
     unsuccessful: { cs: "Nepodařilo se upravit uživatel", en: "Failed to updated user" },
 
     name: { cs: "Jméno", en: "Name" },
-    uuIdentity:{"cs":"uuIdentity","en":"uuIdentity"},
+    uuIdentity:{"cs":"uuIdentita","en":"uuIdentity"},
     role:{"cs":"Role","en":"Roles"},
     subject:{"cs":"Předměty","en":"Subjets"},
 }

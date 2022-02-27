@@ -9,7 +9,7 @@ export default {
     name: { cs: "Jméno", en: "Name" },
     grade: { cs: "Známka", en: "Grade" },
     description: { cs: "Popisek", en: "Description" },
-    userId: { cs: "uuIdentity", en: "uuIdentity" },
+    userId: { cs: "uuIdentita", en: "uuIdentity" },
     assignmentId: { cs: "Kód úkolu", en: "Assignment Id" },
 
 }
